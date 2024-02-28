@@ -1,8 +1,6 @@
 
 
-/*---------------------------------------
-  CUSTOM PROPERTIES ( VARIABLES )             
------------------------------------------*/
+
 :root {
   --white-color:                  #ffffff;
   --primary-color:                #13547a;
@@ -45,9 +43,7 @@ body {
 }
 
 
-/*---------------------------------------
-  TYPOGRAPHY               
------------------------------------------*/
+
 
 h2,
 h3,
@@ -128,9 +124,7 @@ strong {
 }
 
 
-/*---------------------------------------
-  SECTION               
------------------------------------------*/
+
 .section-padding {
   padding-top: 100px;
   padding-bottom: 100px;
@@ -153,6 +147,11 @@ strong {
 
 .section-overlay + .container {
   position: relative;
+}
+
+.tab-content {
+  background-color: var(--white-color);
+  border-radius: var(--border-radius-medium);
 }
 
 .nav-tabs {
@@ -186,24 +185,6 @@ strong {
   color: var(--primary-color);
 }
 
-/*---------------------------------------
-  SITE HEADER              
------------------------------------------
-.site-header {
-  background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
-  padding-top: 150px;
-  padding-bottom: 80px;
-}
-
-.site-header .container {
-  height: 100%;
-}
-
-
-
-/*---------------------------------------
-  NAVIGATION              
------------------------------------------*/
 .sticky-wrapper {
   position: absolute;
   top: 0;
@@ -410,9 +391,7 @@ strong {
 }
 
 
-/*---------------------------------------
-  HERO        
------------------------------------------*/
+
 .hero-section {
   background-image: linear-gradient(15deg, #13547a 0%, #80d0c7 100%);
   position: relative;
@@ -448,9 +427,7 @@ strong {
 }
 
 
-/*---------------------------------------
-  TOPICS              
------------------------------------------*/
+
 .featured-section {
   background-color: var(--secondary-color);
   border-radius: 0 0 100px 100px;
@@ -543,34 +520,6 @@ strong {
   color: var(--secondary-color);
 }
 
-.bg-design {
-  background-color: #00B0FF;
-}
-
-.bg-graphic {
-  background-color: #00BFA6;
-}
-
-.bg-advertising {
-  background-color: #F50057;
-}
-
-.bg-finance {
-  background-color: #536DFE;
-}
-
-.bg-music {
-  background-color: #F9A826;
-}
-
-.bg-education {
-  background-color: #00BFA6;
-}
-
-
-/*---------------------------------------
-  TOPICS               
------------------------------------------*/
 .topics-detail-block {
   border-radius: var(--border-radius-medium);
   position: relative;
@@ -611,9 +560,7 @@ blockquote {
 }
 
 
-/*---------------------------------------
-  PAGINATION              
------------------------------------------*/
+
 .pagination {
   margin-top: 40px;
 }
@@ -648,118 +595,38 @@ blockquote {
   background-color: var(--secondary-color);
   border-color: var(--secondary-color);
 }
-
-
-/*---------------------------------------
-  TIMELINE              
------------------------------------------*/
-.timeline-section {
-  background-image: url('../images/colleagues-working-cozy-office-medium-shot.jpg');
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  position: relative;
+.custom-form .form-control {
+  border-radius: var(--border-radius-large);
+  color: var(--p-color);
+  margin-bottom: 24px;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  padding-left: 20px;
+  outline: none;
 }
 
-.timeline-container .vertical-scrollable-timeline {
-  list-style-type: none;
-  position: relative;
-  padding-left: 0;
+.form-floating>label {
+  padding-left: 20px;
 }
 
-.timeline-container .vertical-scrollable-timeline .list-progress {
-  width: 8px;
-  height: 87%;
-  background-color: var(--primary-color);
-  position: absolute;
-  left: 52px;
-  top: 0;
-  overflow: hidden;
-}
-
-.timeline-container .vertical-scrollable-timeline .list-progress .inner {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  height: 100%;
-  background-color: var(--secondary-color);
-  width: 100%;
-}
-
-.timeline-container .vertical-scrollable-timeline li {
-  position: relative;
-  padding: 20px 0px 65px 145px;
-}
-
-.timeline-container .vertical-scrollable-timeline li:last-child {
-  padding-bottom: 0;
-}
-
-.timeline-container .vertical-scrollable-timeline li p {
-  line-height: 40px;
-}
-
-.timeline-container .vertical-scrollable-timeline li p:last-child {
+.custom-form button[type="submit"] {
+  background: var(--custom-btn-bg-color);
+  border: none;
+  border-radius: var(--border-radius-large);
+  color: var(--white-color);
+  font-family: var(--title-font-family);
+  font-size: var(--p-font-size);
+  font-weight: var(--font-weight-semibold);
+  transition: all 0.3s;
   margin-bottom: 0;
 }
 
-.timeline-container .vertical-scrollable-timeline li .icon-holder {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 104px;
-  height: 104px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: var(--secondary-color);
-  border-radius: 50%;
-  z-index: 1;
-  transition: 0.4s all;
+.custom-form button[type="submit"]:hover,
+.custom-form button[type="submit"]:focus {
+  background: var(--custom-btn-bg-hover-color);
+  border-color: transparent;
 }
 
-.timeline-container .vertical-scrollable-timeline li .icon-holder::before {
-  content: "";
-  width: 80px;
-  height: 80px;
-  border: 4px solid #fff;
-  position: absolute;
-  background-color: var(--secondary-color);
-  border-radius: 50%;
-  z-index: -1;
-  transition: 0.4s all;
-}
-
-.timeline-container .vertical-scrollable-timeline li .icon-holder i {
-  font-size: 25px;
-  color: var(--white-color);
-}
-
-.timeline-container .vertical-scrollable-timeline li::before {
-  content: "";
-  position: absolute;
-  height: 100%;
-  width: 8px;
-  background-color: transparent;
-  left: 52px;
-  z-index: 0;
-}
-
-.timeline-container .vertical-scrollable-timeline li.active .icon-holder {
-  background-color: var(--primary-color);
-}
-
-.timeline-container .vertical-scrollable-timeline li.active .icon-holder::before {
-  background-color: var(--primary-color);
-}
-
-
-
-
-
-/*---------------------------------------
-  SITE FOOTER              
------------------------------------------*/
 .site-footer {
   border-bottom: 10px solid var(--secondary-color);
   position: relative;
@@ -838,9 +705,7 @@ blockquote {
 }
 
 
-/*---------------------------------------
-  SOCIAL ICON     is this we need?            
------------------------------------------*/
+
 .social-icon {
   margin: 0;
   padding: 0;
@@ -872,9 +737,8 @@ blockquote {
 }
 
 
-/*---------------------------------------
-  RESPONSIVE STYLES               
------------------------------------------*/
+/*-----------------*/
+
 @media screen and (max-width: 991px) {
   h1 {
     font-size: 48px;
