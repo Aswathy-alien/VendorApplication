@@ -2,9 +2,32 @@
 """Django's command-line utility for administrative tasks."""
 import os
 import sys
+import mysql.connector
 
 
 def main():
+    dataBase = mysql.connector.connect(
+        host="localhost",
+        user="root",
+        passwd="password",
+        database="test")
+
+    cursorObject = dataBase.cursor()
+
+    print("Displaying NAME from the USERS table:")
+
+    # selecting query
+    query = "SELECT name FROM users"
+    cursorObject.execute(query)
+
+    result = cursorObject.fetchall()
+
+    for x in result:
+        print(x)
+
+    # disconnecting from server
+    dataBase.close()
+
     """Run administrative tasks."""
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vendordjango.settings')
     try:
