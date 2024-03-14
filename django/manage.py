@@ -10,7 +10,7 @@ def main():
         host="localhost",
         user="root",
         passwd="password",
-        database="test")
+        database="vendorappdb")
 
     cursorObject = dataBase.cursor()
 

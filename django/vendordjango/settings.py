@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'vendordjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'test',
+        'NAME': 'vendorappdb',
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST':'localhost',
@@ -125,6 +125,7 @@ STATIC_URL = 'static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'vendordjango/djangoapp/static'),
 ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
