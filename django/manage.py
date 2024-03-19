@@ -10,20 +10,11 @@ def main():
         host="localhost",
         user="root",
         passwd="password",
-        database="vendorappdb")
+        database="test")
 
     cursorObject = dataBase.cursor()
 
-    print("Displaying NAME from the USERS table:")
-
-    # selecting query
-    query = "SELECT name FROM users"
-    cursorObject.execute(query)
-
-    result = cursorObject.fetchall()
-
-    for x in result:
-        print(x)
+    
 
     # disconnecting from server
     dataBase.close()

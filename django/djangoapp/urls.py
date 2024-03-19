@@ -12,5 +12,7 @@ urlpatterns = [
     path('adminis/reviewproduct.html', views.adminreviewproduct, name='adminreviewproduct'),
     path('adminis/viewproduct.html', views.adminviewproduct, name='adminviewproduct'),
     path('adminis/viewcategory.html', views.adminviewcategory, name='adminviewcategory'),
+    path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
+    path('adminis/dashboard.html', views.company_count_view, name='company-count'),
 
 ]

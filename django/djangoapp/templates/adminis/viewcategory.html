@@ -474,10 +474,10 @@
                         <td>{{ category.category_description }}</td>  <!-- Assuming category_description is the field for Description -->
                         <td>
                           <div class="hstack gap-2 fs-15">
-                            <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
-                            <a href="javascript:void(0);" class="btn btn-icon btn-sm btn-danger-light product-btn"><i class="ri-delete-bin-line"></i></a>
+                              <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
+                              <a href="javascript:void(0);" data-id="{{ category.id }}" class="btn btn-icon btn-sm btn-danger-light product-btn delete-btn"><i class="ri-delete-bin-line"></i></a>
                           </div>
-                        </td>
+                      </td>
                       </tr>
                       {% endfor %}
                     </tbody>

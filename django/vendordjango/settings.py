@@ -78,7 +78,7 @@ WSGI_APPLICATION = 'vendordjango.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'vendorappdb',
+        'NAME': 'test',
         'USER': 'root',
         'PASSWORD': 'password',
         'HOST':'localhost',
