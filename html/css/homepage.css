@@ -6,7 +6,7 @@
   --primary-color:                #0e65b6;
   --secondary-color:              #030f4a;
   --section-bg-color:             #f0f8ff;
-  --custom-btn-bg-color:          #030f4a;
+  --custom-btn-bg-color:          #845adf;
   --custom-btn-bg-hover-color:    #1c54ef;
   --dark-color:                   #000000;
   --p-color:                      #717275;
@@ -39,7 +39,7 @@
 
 body {
   background-color: var(--white-color);
-  font-family: var(--body-font-family); 
+  
 }
 
 
@@ -59,7 +59,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--title-font-family); 
+  
   font-weight: var(--font-weight-semibold);
 }
 
