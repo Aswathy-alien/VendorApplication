@@ -451,191 +451,53 @@
             </div>
           </div>
           <!-- Page Header Close -->
-          <!-- Start::row-1 -->
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="card custom-card">
-                <div class="card-header">
-                  <div class="card-title">View Categories</div>
+         <!-- Start::row-1 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-title">View Categories</div>
+                <div>
+                    <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex" style="justify-content: flex-end !important;">
+                        <a href="addcategory.html" class="btn btn-primary m-1">Add New Category <i class="bi bi-plus-lg ms-2"></i></a>
+                    </div>
                 </div>
-                <div class="card-body">
-                  <table id="responsivemodal-DataTable" class="table table-bordered " style="width:100%">
+            </div>
+            <div class="card-body">
+                <table id="responsivemodal-DataTable" class="table table-bordered" style="width:100%">
                     <thead>
-                      <tr>
-                        <th>Category Name</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                      </tr>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      {% for category in categories %}
-                      <tr>
-                        <td>{{ category.category_name }}</td>  <!-- Assuming category_name is the field for Category Name -->
-                        <td>{{ category.category_description }}</td>  <!-- Assuming category_description is the field for Description -->
-                        <td>
-                          <div class="hstack gap-2 fs-15">
-                              <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
-                              <a href="javascript:void(0);" data-id="{{ category.id }}" class="btn btn-icon btn-sm btn-danger-light product-btn delete-btn"><i class="ri-delete-bin-line"></i></a>
-                          </div>
-                      </td>
-                      </tr>
-                      {% endfor %}
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ category.category_name }}</td>
+                            <td>{{ category.category_description }}</td>
+                            <td>
+                                <div class="hstack gap-2 fs-15">
+                                    <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
+                                    <form action="{% url 'administrator:delete_category' category.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-icon btn-sm btn-danger-light product-btn"><i class="ri-delete-bin-line"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
-                  </table>
-                </div>
-              </div>
+                </table>
             </div>
-          </div>
-          
         </div>
-      </div>
-      <!-- End::app-content -->
-      <div
-        class="modal fade"
-        id="searchModal"
-        tabindex="-1"
-        aria-labelledby="searchModal"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="input-group">
-                <a
-                  href="javascript:void(0);"
-                  class="input-group-text"
-                  id="Search-Grid"
-                >
-                  <i class="fe fe-search header-link-icon fs-18"></i>
-                </a>
-                <input
-                  type="search"
-                  class="form-control border-0 px-2"
-                  placeholder="Search"
-                  aria-label="Username"
-                />
-                <a
-                  href="javascript:void(0);"
-                  class="input-group-text"
-                  id="voice-search"
-                >
-                  <i class="fe fe-mic header-link-icon"></i>
-                </a>
-                <a
-                  href="javascript:void(0);"
-                  class="btn btn-light btn-icon"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fe fe-more-vertical"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="mt-4">
-                <p class="font-weight-semibold text-muted mb-2">
-                  Are You Looking For...
-                </p>
-                <span class="search-tags">
-                  <i class="fe fe-user me-2"></i>People
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-file-text me-2"></i>Pages
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-align-left me-2"></i>Articles
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-server me-2"></i>Tags
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-              </div>
-              <div class="my-4">
-                <p class="font-weight-semibold text-muted mb-2">
-                  Recent Search :
-                </p>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
-                >
-                  <a href="notifications.html">
-                    <span>Notifications</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
-                >
-                  <a href="alerts.html">
-                    <span>Alerts</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert"
-                >
-                  <a href="mail.html">
-                    <span>Mail</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="btn-group ms-auto">
-                <button class="btn btn-sm btn-primary-light">Search</button>
-                <button class="btn btn-sm btn-primary">Clear Recents</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
+</div></div>
+<!-- End::row-1 -->
+
+  
       <!-- Footer Start -->
       <footer class="footer mt-auto py-3 bg-white text-center">
         <div class="container">
