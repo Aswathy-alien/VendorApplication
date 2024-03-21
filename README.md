@@ -1,6 +1,6 @@
 # VendorApplication
 
-Install Django (If not installed already)
+## Install Django (If not installed already)
 
 ## Setting up Database Migrations and Seeding Data
 
