@@ -1,7 +1,7 @@
 
 # Create your views here.
-from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.http import HttpResponse, JsonResponse
+from django.shortcuts import get_object_or_404, redirect, render
 from administrator.forms import ProductCategoryForm
 
 def index(request):
@@ -44,15 +44,11 @@ def adminviewcategory(request):
 import json
 
 def delete_category(request, category_id):
+    category = get_object_or_404(ProductCategory, id=category_id)
     if request.method == 'POST':
-        try:
-            category = ProductCategory.objects.get(pk=category_id)
-            category.delete()
-            return HttpResponse(json.dumps({'success': True}), content_type='application/json')
-        except ProductCategory.DoesNotExist:
-            return HttpResponse(json.dumps({'success': False, 'error': 'Category does not exist.'}), content_type='application/json')
-    return HttpResponse(json.dumps({'success': False, 'error': 'Invalid request method.'}), content_type='application/json')
-
+        category.delete()
+        return redirect('../../viewcategory.html')
+    return redirect('viewcategory.html')  # Redirect to appropriate URL after deletion
 
 def admindashboard(request):
 

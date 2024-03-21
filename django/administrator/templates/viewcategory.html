@@ -24,13 +24,13 @@
       type="image/x-icon"
     />
     <!-- Choices JS -->
-    <script src="{% static '/assets/libs/choices.js/public/assets/scripts/choices.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js"></script>
     <!-- Main Theme Js -->
     <script src="{% static '/assets/js/main.js' %}"></script>
     <!-- Bootstrap Css -->
     <link
       id="style"
-      href="{% static '/assets/libs/bootstrap/css/bootstrap.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
       rel="stylesheet"
     />
     <!-- Style Css -->
@@ -42,53 +42,41 @@
     <link href="{% static '/assets/css/icons.css' %}" rel="stylesheet" />
     <!-- Node Waves Css -->
     <link
-      href="{% static '/assets/libs/node-waves/waves.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.css"
       rel="stylesheet"
     />
     <!-- Simplebar Css -->
     <link
-      href="{% static '/assets/libs/simplebar/simplebar.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.css"
       rel="stylesheet"
     />
     <!-- Color Picker Css -->
     <link
       rel="stylesheet"
-      href="{% static '/assets/libs/flatpickr/flatpickr.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
     />
     <link
       rel="stylesheet"
-      href="{% static '/assets/libs/@simonwep/pickr/themes/nano.min.css' %}"
+      href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/themes/nano.min.css"
     />
     <!-- Choices Css -->
     <link
       rel="stylesheet"
-      href="{% static '../../../assets/libs/choices.js/public/assets/styles/choices.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js"
     />
     <link
       rel="stylesheet"
-      href="{% static '/assets/libs/quill/quill.snow.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css"
     />
     <link
       rel="stylesheet"
-      href="{% static '/assets/libs/quill/quill.bubble.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.bubble.css"
     />
-    <!-- Filepond CSS -->
-    <link
-      rel="stylesheet"
-      href="{% static '/assets/libs/filepond/filepond.min.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static '/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.css' %}"
-    />
-    <link
-      rel="stylesheet"
-      href="{% static '/assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.css' %}"
-    />
+   
     <!-- Date & Time Picker CSS -->
     <link
       rel="stylesheet"
-      href="{% static '/assets/libs/flatpickr/flatpickr.min.css' %}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
     />
 
     <link
@@ -451,191 +439,53 @@
             </div>
           </div>
           <!-- Page Header Close -->
-          <!-- Start::row-1 -->
-          <div class="row">
-            <div class="col-xl-12">
-              <div class="card custom-card">
-                <div class="card-header">
-                  <div class="card-title">View Categories</div>
+         <!-- Start::row-1 -->
+<div class="row">
+    <div class="col-xl-12">
+        <div class="card custom-card">
+            <div class="card-header d-flex justify-content-between align-items-center">
+                <div class="card-title">View Categories</div>
+                <div>
+                    <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex" style="justify-content: flex-end !important;">
+                        <a href="addcategory.html" class="btn btn-primary m-1">Add New Category <i class="bi bi-plus-lg ms-2"></i></a>
+                    </div>
                 </div>
-                <div class="card-body">
-                  <table id="responsivemodal-DataTable" class="table table-bordered " style="width:100%">
+            </div>
+            <div class="card-body">
+                <table id="responsivemodal-DataTable" class="table table-bordered" style="width:100%">
                     <thead>
-                      <tr>
-                        <th>Category Name</th>
-                        <th>Description</th>
-                        <th>Action</th>
-                      </tr>
+                        <tr>
+                            <th>Category Name</th>
+                            <th>Description</th>
+                            <th>Action</th>
+                        </tr>
                     </thead>
                     <tbody>
-                      {% for category in categories %}
-                      <tr>
-                        <td>{{ category.category_name }}</td>  <!-- Assuming category_name is the field for Category Name -->
-                        <td>{{ category.category_description }}</td>  <!-- Assuming category_description is the field for Description -->
-                        <td>
-                          <div class="hstack gap-2 fs-15">
-                              <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
-                              <a href="javascript:void(0);" data-id="{{ category.id }}" class="btn btn-icon btn-sm btn-danger-light product-btn delete-btn"><i class="ri-delete-bin-line"></i></a>
-                          </div>
-                      </td>
-                      </tr>
-                      {% endfor %}
+                        {% for category in categories %}
+                        <tr>
+                            <td>{{ category.category_name }}</td>
+                            <td>{{ category.category_description }}</td>
+                            <td>
+                                <div class="hstack gap-2 fs-15">
+                                    <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
+                                    <form action="{% url 'administrator:delete_category' category.id %}" method="post">
+                                        {% csrf_token %}
+                                        <button type="submit" class="btn btn-icon btn-sm btn-danger-light product-btn"><i class="ri-delete-bin-line"></i></button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                        {% endfor %}
                     </tbody>
-                  </table>
-                </div>
-              </div>
+                </table>
             </div>
-          </div>
-          
         </div>
-      </div>
-      <!-- End::app-content -->
-      <div
-        class="modal fade"
-        id="searchModal"
-        tabindex="-1"
-        aria-labelledby="searchModal"
-        aria-hidden="true"
-      >
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-body">
-              <div class="input-group">
-                <a
-                  href="javascript:void(0);"
-                  class="input-group-text"
-                  id="Search-Grid"
-                >
-                  <i class="fe fe-search header-link-icon fs-18"></i>
-                </a>
-                <input
-                  type="search"
-                  class="form-control border-0 px-2"
-                  placeholder="Search"
-                  aria-label="Username"
-                />
-                <a
-                  href="javascript:void(0);"
-                  class="input-group-text"
-                  id="voice-search"
-                >
-                  <i class="fe fe-mic header-link-icon"></i>
-                </a>
-                <a
-                  href="javascript:void(0);"
-                  class="btn btn-light btn-icon"
-                  data-bs-toggle="dropdown"
-                  aria-expanded="false"
-                >
-                  <i class="fe fe-more-vertical"></i>
-                </a>
-                <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                  </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                  </li>
-                </ul>
-              </div>
-              <div class="mt-4">
-                <p class="font-weight-semibold text-muted mb-2">
-                  Are You Looking For...
-                </p>
-                <span class="search-tags">
-                  <i class="fe fe-user me-2"></i>People
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-file-text me-2"></i>Pages
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-align-left me-2"></i>Articles
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-server me-2"></i>Tags
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-              </div>
-              <div class="my-4">
-                <p class="font-weight-semibold text-muted mb-2">
-                  Recent Search :
-                </p>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
-                >
-                  <a href="notifications.html">
-                    <span>Notifications</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
-                >
-                  <a href="alerts.html">
-                    <span>Alerts</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-                <div
-                  class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert"
-                >
-                  <a href="mail.html">
-                    <span>Mail</span>
-                  </a>
-                  <a
-                    class="ms-auto lh-1"
-                    href="javascript:void(0);"
-                    data-bs-dismiss="alert"
-                    aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
-                </div>
-              </div>
-            </div>
-            <div class="modal-footer">
-              <div class="btn-group ms-auto">
-                <button class="btn btn-sm btn-primary-light">Search</button>
-                <button class="btn btn-sm btn-primary">Clear Recents</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+    </div>
+</div>
+</div></div>
+<!-- End::row-1 -->
+
+  
       <!-- Footer Start -->
       <footer class="footer mt-auto py-3 bg-white text-center">
         <div class="container">
@@ -663,20 +513,20 @@
     </div>
     <div id="responsive-overlay"></div>
     <!-- Popper JS -->
-    <script src="{% static '/assets/libs/@popperjs/core/umd/popper.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
     <!-- Bootstrap JS -->
-    <script src="{% static '/assets/libs/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
     <!-- Defaultmenu JS -->
     <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
     <!-- Node Waves JS-->
-    <script src="{% static '/assets/libs/node-waves/waves.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
     <!-- Sticky JS -->
-    <script src="{% static '/assets/js/sticky.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
     <!-- Simplebar JS -->
-    <script src="{% static '/assets/libs/simplebar/simplebar.min.js' %}"></script>
-    <script src="{% static '/assets/js/simplebar.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.js"></script>
     <!-- Color Picker JS -->
-    <script src="{% static '/assets/libs/@simonwep/pickr/pickr.es5.min.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
     <!-- Custom-Switcher JS -->
     <script src="{% static '/assets/js/custom-switcher.min.js' %}"></script>
     <!-- Date & Time Picker JS -->
