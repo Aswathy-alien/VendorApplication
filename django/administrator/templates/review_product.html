@@ -8,8 +8,7 @@
   data-menu-styles="dark"
   data-toggled="close"
 >
-  <head>
-    <!-- Meta Data -->
+  <!-- Meta Data --><head>
     <meta charset="UTF-8" />
     <meta
       name="viewport"
@@ -17,39 +16,48 @@
     />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Citisoft - Financial Software Inventory</title>
+
     <!-- Favicon -->
     <link
       rel="icon"
       href="{% static '/assets/images/brand-logos/favicon.ico' %}"
       type="image/x-icon"
     />
+
     <!-- Choices JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js"></script>
+
     <!-- Main Theme Js -->
     <script src="{% static '/assets/js/main.js' %}"></script>
+
     <!-- Bootstrap Css -->
     <link
       id="style"
       href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
       rel="stylesheet"
     />
+
     <!-- Style Css -->
     <link
       href="{% static '/assets/css/styles.min.css' %}"
       rel="stylesheet"
     />
+
     <!-- Icons Css -->
     <link href="{% static '/assets/css/icons.css' %}" rel="stylesheet" />
+
     <!-- Node Waves Css -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.css"
       rel="stylesheet"
     />
+
     <!-- Simplebar Css -->
     <link
       href="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.css"
       rel="stylesheet"
     />
+
     <!-- Color Picker Css -->
     <link
       rel="stylesheet"
@@ -59,26 +67,14 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/themes/nano.min.css"
     />
+
     <!-- Choices Css -->
     <link
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/choices.js/10.2.0/choices.min.js"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.snow.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/quill/1.3.7/quill.bubble.css"
-    />
-   
-    <!-- Date & Time Picker CSS -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
+      href="{% static '/assets/libs/choices.js/public/assets/styles/choices.min.css' %}"
     />
   </head>
+
   <body>
     <div class="page">
       <!-- app-header -->
@@ -90,7 +86,7 @@
             <!-- Start::header-element -->
             <div class="header-element">
               <div class="horizontal-logo">
-                <a href="index.html" class="header-logo">
+                <a href="dashboard.html" class="header-logo">
                   <img
                     src="{% static '/assets/images/brand-logos/desktop-logo.png' %}"
                     alt="logo"
@@ -115,6 +111,7 @@
               </div>
             </div>
             <!-- End::header-element -->
+
             <!-- Start::header-element -->
             <div class="header-element">
               <!-- Start::header-link -->
@@ -123,14 +120,14 @@
                 class="sidemenu-toggle header-link animated-arrow hor-toggle horizontal-navtoggle"
                 data-bs-toggle="sidebar"
                 href="javascript:void(0);"
-              >
-                <span></span>
-              </a>
+                ><span></span
+              ></a>
               <!-- End::header-link -->
             </div>
             <!-- End::header-element -->
           </div>
           <!-- End::header-content-left -->
+
           <!-- Start::header-content-right -->
           <div class="header-content-right">
             <!-- Start::header-element -->
@@ -147,6 +144,7 @@
               <!-- End::header-link -->
             </div>
             <!-- End::header-element -->
+
             <!-- Start::header-element -->
             <div class="header-element header-theme-mode">
               <!-- Start::header-link|layout-setting -->
@@ -165,6 +163,7 @@
               <!-- End::header-link|layout-setting -->
             </div>
             <!-- End::header-element -->
+
             <!-- Start::header-element -->
             <div class="header-element">
               <!-- Start::header-link|dropdown-toggle -->
@@ -200,48 +199,49 @@
                 aria-labelledby="mainHeaderProfile"
               >
                 <li>
-                  <a class="dropdown-item d-flex" href="profile.html">
-                    <i class="ti ti-user-circle fs-18 me-2 op-7"></i>Profile
-                  </a>
+                  <a class="dropdown-item d-flex" href="profile.html"
+                    ><i class="ti ti-user-circle fs-18 me-2 op-7"></i>Profile</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex" href="mail.html">
-                    <i class="ti ti-inbox fs-18 me-2 op-7"></i>Inbox
-                    <span class="badge bg-success-transparent ms-auto">25</span>
-                  </a>
+                  <a class="dropdown-item d-flex" href="mail.html"
+                    ><i class="ti ti-inbox fs-18 me-2 op-7"></i>Inbox
+                    <span class="badge bg-success-transparent ms-auto"
+                      >25</span
+                    ></a
+                  >
                 </li>
                 <li>
                   <a
                     class="dropdown-item d-flex border-block-end"
                     href="to-do-list.html"
+                    ><i class="ti ti-clipboard-check fs-18 me-2 op-7"></i>Task
+                    Manager</a
                   >
-                    <i class="ti ti-clipboard-check fs-18 me-2 op-7"></i>Task
-                    Manager
-                  </a>
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex" href="mail-settings.html">
-                    <i class="ti ti-adjustments-horizontal fs-18 me-2 op-7"></i
-                    >Settings
-                  </a>
+                  <a class="dropdown-item d-flex" href="mail-settings.html"
+                    ><i class="ti ti-adjustments-horizontal fs-18 me-2 op-7"></i
+                    >Settings</a
+                  >
                 </li>
                 <li>
                   <a
                     class="dropdown-item d-flex border-block-end"
                     href="javascript:void(0);"
+                    ><i class="ti ti-wallet fs-18 me-2 op-7"></i>Bal:
+                    $7,12,950</a
                   >
-                    <i class="ti ti-wallet fs-18 me-2 op-7"></i>Bal: $7,12,950
-                  </a>
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex" href="chat.html">
-                    <i class="ti ti-headset fs-18 me-2 op-7"></i>Support
-                  </a>
+                  <a class="dropdown-item d-flex" href="chat.html"
+                    ><i class="ti ti-headset fs-18 me-2 op-7"></i>Support</a
+                  >
                 </li>
                 <li>
-                  <a class="dropdown-item d-flex" href="sign-in-cover.html">
-                    <i class="ti ti-logout fs-18 me-2 op-7"></i>Log Out
-                  </a>
+                  <a class="dropdown-item d-flex" href="sign-in-cover.html"
+                    ><i class="ti ti-logout fs-18 me-2 op-7"></i>Log Out</a
+                  >
                 </li>
               </ul>
             </div>
@@ -256,7 +256,7 @@
       <aside class="app-sidebar sticky" id="sidebar">
         <!-- Start::main-sidebar-header -->
         <div class="main-sidebar-header">
-          <a href="index.html" class="header-logo">
+          <a href="dashboard.html" class="header-logo">
             <img
               src="{% static '/assets/images/brand-logos/desktop-logo.png' %}"
               alt="logo"
@@ -280,6 +280,7 @@
           </a>
         </div>
         <!-- End::main-sidebar-header -->
+
         <!-- Start::main-sidebar -->
         <div class="main-sidebar" id="sidebar-scroll">
           <!-- Start::nav -->
@@ -324,13 +325,13 @@
                   </li>
                   <li class="slide">
                     <a
-                      href="reviewproduct.html"
+                      href="review_product.html"
                       class="side-menu__item"
                       >Review Product</a
                     >
                   </li>
                   <li class="slide">
-                    <a href="viewproduct.html" class="side-menu__item"
+                    <a href="view_product.html" class="side-menu__item"
                       >View Products</a
                     >
                   </li>
@@ -342,13 +343,13 @@
                     <ul class="slide-menu child2">
                       <li class="slide">
                         <a
-                          href="addcategory.html"
+                          href="add_category.html"
                           class="side-menu__item"
                           >Add Category</a
                         >
                       </li>
                       <li class="slide">
-                        <a href="viewcategory.html" class="side-menu__item"
+                        <a href="view_category.html" class="side-menu__item"
                           >View Category</a
                         >
                       </li>
@@ -401,6 +402,7 @@
         <!-- End::main-sidebar -->
       </aside>
       <!-- End::app-sidebar -->
+
       <!-- Start::app-content -->
       <div class="main-content app-content">
         <div class="container-fluid">
@@ -408,7 +410,7 @@
           <div
             class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb"
           >
-            <h1 class="page-title fw-semibold fs-18 mb-0">Add Category</h1>
+            <h1 class="page-title fw-semibold fs-18 mb-0">Review Product</h1>
             <div class="ms-md-1 ms-0">
               <nav>
                 <ol class="breadcrumb mb-0">
@@ -416,52 +418,319 @@
                     <a href="#">Product Management</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    Add Category
+                    Review Product
                   </li>
                 </ol>
               </nav>
             </div>
           </div>
           <!-- Page Header Close -->
+
           <!-- Start::row-1 -->
-<div class="row">
-  <div class="col-xl-12">
-    <div class="card custom-card">
-      <div class="card-body add-products p-0">
-        <form method="post" class="p-4">
-          {% csrf_token %}
-          <div class="row gx-5">
-            <div class="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
-              <div class="card custom-card shadow-none mb-0 border-0">
-                <div class="card-body p-0">
-                  <div class="row gy-3">
-                    <div class="col-xl-12">
-                      {{ form.category_name.label_tag }}
-                      {{ form.category_name }}
-                      <small class="form-text text-muted">*Category Name should not exceed 30 characters</small>
-                    </div>
-                    <div class="col-xl-12">
-                      {{ form.category_description.label_tag }}
-                      {{ form.category_description }}
-                      <small class="form-text text-muted">*Description should not exceed 500 letters</small>
-                    </div>
+          <div class="row">
+            <div class="col-xl-12">
+              <div class="card custom-card">
+                <div class="card-header">
+                  <div class="card-title">Product Review List</div>
+                </div>
+                <div class="card-body">
+                  <div class="table-responsive mb-4">
+                    <table class="table text-nowrap table-bordered">
+                      <thead>
+                        <tr>
+                          <th scope="col">
+                            <input
+                              class="form-check-input check-all"
+                              type="checkbox"
+                              id="all-products"
+                              value=""
+                              aria-label="..."
+                            />
+                          </th>
+                          <th scope="col">Product</th>
+                          <th scope="col">Category</th>
+                          <th scope="col">Company Name</th>
+                          <th scope="col">Website</th>
+                          <th scope="col">Status</th>
+                          <th scope="col">Action</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr class="product-list">
+                          <td class="product-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="product1"
+                              value=""
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded">
+                                  <img
+                                    src="{% static '/assets/images/ecommerce/png/1.png' %}"
+                                    alt=""
+                                  />
+                                </span>
+                              </div>
+                              <div class="fw-semibold">ADDEPAR</div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-default"
+                              >Wealth Management</span
+                            >
+                          </td>
+                          <td>ADDEPAR, INC.</td>
+                          <td>
+                            <a href="www.addepar.com">www.addepar.com </a>
+                          </td>
+                          <td><span class="badge bg-danger">Pending</span></td>
+                          <td>
+                            <div class="hstack gap-2 fs-15">
+                              <a
+                                href="edit-products.html"
+                                class="btn btn-icon btn-sm btn-info-light"
+                                ><i class="ri-edit-line"></i
+                              ></a>
+                              <a
+                                href="javascript:void(0);"
+                                class="btn btn-icon btn-sm btn-danger-light product-btn"
+                                ><i class="ri-delete-bin-line"></i
+                              ></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="product-list">
+                          <td class="product-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="product2"
+                              value=""
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded">
+                                  <img
+                                    src="{% static '/assets/images/ecommerce/png/2.png' %}"
+                                    alt=""
+                                  />
+                                </span>
+                              </div>
+                              <div class="fw-semibold">ADOIT</div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-default"
+                              >Enterprise Architecture
+                            </span>
+                          </td>
+                          <td>BOC Group</td>
+                          <td>www.boc-group.com/en/adoit/</td>
+                          <td><span class="badge bg-danger">Pending</span></td>
+                          <td>
+                            <div class="hstack gap-2 fs-15">
+                              <a
+                                href="edit-products.html"
+                                class="btn btn-icon btn-sm btn-info-light"
+                                ><i class="ri-edit-line"></i
+                              ></a>
+                              <a
+                                href="javascript:void(0);"
+                                class="btn btn-icon btn-sm btn-danger-light product-btn"
+                                ><i class="ri-delete-bin-line"></i
+                              ></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="product-list">
+                          <td class="product-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="product3"
+                              value=""
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded">
+                                  <img
+                                    src="{% static '/assets/images/ecommerce/png/15.png' %}"
+                                    alt=""
+                                  />
+                                </span>
+                              </div>
+                              <div class="fw-semibold">ADONIS</div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-default"
+                              >Business Process Management</span
+                            >
+                          </td>
+                          <td>BOC Group</td>
+                          <td>https://www.boc-group.com/en/adonis/</td>
+                          <td><span class="badge bg-danger">Pending</span></td>
+                          <td>
+                            <div class="hstack gap-2 fs-15">
+                              <a
+                                href="edit-products.html"
+                                class="btn btn-icon btn-sm btn-info-light"
+                                ><i class="ri-edit-line"></i
+                              ></a>
+                              <a
+                                href="javascript:void(0);"
+                                class="btn btn-icon btn-sm btn-danger-light product-btn"
+                                ><i class="ri-delete-bin-line"></i
+                              ></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="product-list">
+                          <td class="product-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="product4"
+                              value=""
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded">
+                                  <img
+                                    src="{% static '/assets/images/ecommerce/png/3.png' %}"
+                                    alt=""
+                                  />
+                                </span>
+                              </div>
+                              <div class="fw-semibold">ADOGRC</div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-default"
+                              >Governance</span
+                            >
+                          </td>
+                          <td>BOC Group</td>
+                          <td>www.boc-group.com/en/adogrc/</td>
+                          <td>
+                            <span class="badge bg-success">Published</span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-2 fs-15">
+                              <a
+                                href="edit-products.html"
+                                class="btn btn-icon btn-sm btn-info-light"
+                                ><i class="ri-edit-line"></i
+                              ></a>
+                              <a
+                                href="javascript:void(0);"
+                                class="btn btn-icon btn-sm btn-danger-light product-btn"
+                                ><i class="ri-delete-bin-line"></i
+                              ></a>
+                            </div>
+                          </td>
+                        </tr>
+                        <tr class="product-list">
+                          <td class="product-checkbox">
+                            <input
+                              class="form-check-input"
+                              type="checkbox"
+                              id="product5"
+                              value=""
+                              aria-label="..."
+                            />
+                          </td>
+                          <td>
+                            <div class="d-flex align-items-center">
+                              <div class="me-2">
+                                <span class="avatar avatar-md avatar-rounded">
+                                  <img
+                                    src="{% static '/assets/images/ecommerce/png/4.png' %}"
+                                    alt=""
+                                  />
+                                </span>
+                              </div>
+                              <div class="fw-semibold">Allvue</div>
+                            </div>
+                          </td>
+                          <td>
+                            <span class="badge bg-light text-default"
+                              >Alternative investment
+                            </span>
+                          </td>
+                          <td>Allvue</td>
+
+                          <td>www.allvuesystems.com</td>
+                          <td>
+                            <span class="badge bg-success">Published</span>
+                          </td>
+                          <td>
+                            <div class="hstack gap-2 fs-15">
+                              <a
+                                href="edit-products.html"
+                                class="btn btn-icon btn-sm btn-info-light"
+                                ><i class="ri-edit-line"></i
+                              ></a>
+                              <a
+                                href="javascript:void(0);"
+                                class="btn btn-icon btn-sm btn-danger-light product-btn"
+                                ><i class="ri-delete-bin-line"></i
+                              ></a>
+                            </div>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <div
+                    class="d-flex align-items-center justify-content-between flex-wrap"
+                  >
+                    <nav aria-label="...">
+                      <ul class="pagination mb-0">
+                        <li class="page-item disabled">
+                          <span class="page-link">Previous</span>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item active" aria-current="page">
+                          <span class="page-link">2</span>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                          <a class="page-link" href="#">Next</a>
+                        </li>
+                      </ul>
+                    </nav>
+                    <button class="btn btn-danger btn-wave m-1">
+                      Delete All
+                    </button>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-          <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
-            <button type="submit" class="btn btn-primary-light m-1">Add Category <i class="bi bi-plus-lg ms-2"></i></button>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
-<!--End::row-1 -->
+          <!--End::row-1 -->
         </div>
       </div>
       <!-- End::app-content -->
+
       <div
         class="modal fade"
         id="searchModal"
@@ -477,9 +746,8 @@
                   href="javascript:void(0);"
                   class="input-group-text"
                   id="Search-Grid"
-                >
-                  <i class="fe fe-search header-link-icon fs-18"></i>
-                </a>
+                  ><i class="fe fe-search header-link-icon fs-18"></i
+                ></a>
                 <input
                   type="search"
                   class="form-control border-0 px-2"
@@ -490,9 +758,8 @@
                   href="javascript:void(0);"
                   class="input-group-text"
                   id="voice-search"
-                >
-                  <i class="fe fe-mic header-link-icon"></i>
-                </a>
+                  ><i class="fe fe-mic header-link-icon"></i
+                ></a>
                 <a
                   href="javascript:void(0);"
                   class="btn btn-light btn-icon"
@@ -502,51 +769,43 @@
                   <i class="fe fe-more-vertical"></i>
                 </a>
                 <ul class="dropdown-menu">
-                  <li>
-                    <a class="dropdown-item" href="#">Action</a>
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Another action</a>
-                  </li>
+                  <li><a class="dropdown-item" href="#">Action</a></li>
+                  <li><a class="dropdown-item" href="#">Another action</a></li>
                   <li>
                     <a class="dropdown-item" href="#">Something else here</a>
                   </li>
-                  <li>
-                    <hr class="dropdown-divider" />
-                  </li>
-                  <li>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                  </li>
+                  <li><hr class="dropdown-divider" /></li>
+                  <li><a class="dropdown-item" href="#">Separated link</a></li>
                 </ul>
               </div>
               <div class="mt-4">
                 <p class="font-weight-semibold text-muted mb-2">
                   Are You Looking For...
                 </p>
-                <span class="search-tags">
-                  <i class="fe fe-user me-2"></i>People
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-file-text me-2"></i>Pages
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-align-left me-2"></i>Articles
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
-                <span class="search-tags">
-                  <i class="fe fe-server me-2"></i>Tags
-                  <a href="javascript:void(0)" class="tag-addon">
-                    <i class="fe fe-x"></i>
-                  </a>
-                </span>
+                <span class="search-tags"
+                  ><i class="fe fe-user me-2"></i>People<a
+                    href="javascript:void(0)"
+                    class="tag-addon"
+                    ><i class="fe fe-x"></i></a
+                ></span>
+                <span class="search-tags"
+                  ><i class="fe fe-file-text me-2"></i>Pages<a
+                    href="javascript:void(0)"
+                    class="tag-addon"
+                    ><i class="fe fe-x"></i></a
+                ></span>
+                <span class="search-tags"
+                  ><i class="fe fe-align-left me-2"></i>Articles<a
+                    href="javascript:void(0)"
+                    class="tag-addon"
+                    ><i class="fe fe-x"></i></a
+                ></span>
+                <span class="search-tags"
+                  ><i class="fe fe-server me-2"></i>Tags<a
+                    href="javascript:void(0)"
+                    class="tag-addon"
+                    ><i class="fe fe-x"></i></a
+                ></span>
               </div>
               <div class="my-4">
                 <p class="font-weight-semibold text-muted mb-2">
@@ -555,47 +814,38 @@
                 <div
                   class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
                 >
-                  <a href="notifications.html">
-                    <span>Notifications</span>
-                  </a>
+                  <a href="notifications.html"><span>Notifications</span></a>
                   <a
                     class="ms-auto lh-1"
                     href="javascript:void(0);"
                     data-bs-dismiss="alert"
                     aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
+                    ><i class="fe fe-x text-muted"></i
+                  ></a>
                 </div>
                 <div
                   class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
                 >
-                  <a href="alerts.html">
-                    <span>Alerts</span>
-                  </a>
+                  <a href="alerts.html"><span>Alerts</span></a>
                   <a
                     class="ms-auto lh-1"
                     href="javascript:void(0);"
                     data-bs-dismiss="alert"
                     aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
+                    ><i class="fe fe-x text-muted"></i
+                  ></a>
                 </div>
                 <div
                   class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert"
                 >
-                  <a href="mail.html">
-                    <span>Mail</span>
-                  </a>
+                  <a href="mail.html"><span>Mail</span></a>
                   <a
                     class="ms-auto lh-1"
                     href="javascript:void(0);"
                     data-bs-dismiss="alert"
                     aria-label="Close"
-                  >
-                    <i class="fe fe-x text-muted"></i>
-                  </a>
+                    ><i class="fe fe-x text-muted"></i
+                  ></a>
                 </div>
               </div>
             </div>
@@ -628,37 +878,52 @@
       </footer>
       <!-- Footer End -->
     </div>
+
     <div class="scrollToTop">
-      <span class="arrow">
-        <i class="ri-arrow-up-s-fill fs-20"></i>
-      </span>
+      <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
     </div>
     <div id="responsive-overlay"></div>
+
     <!-- Popper JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+
     <!-- Bootstrap JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+
     <!-- Defaultmenu JS -->
     <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
+
     <!-- Node Waves JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
+
     <!-- Sticky JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
+
     <!-- Simplebar JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.js"></script>
+
     <!-- Color Picker JS -->
     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
-    <!-- Custom-Switcher JS -->
-    <script src="{% static '/assets/js/custom-switcher.min.js' %}"></script>
+
+    <!-- Apex Charts JS -->
+    <script src="{% static '/assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+
+    <!-- JSVector Maps JS -->
+    <script src="{% static '/assets/libs/jsvectormap/js/jsvectormap.min.js' %}"></script>
+
+    <!-- JSVector Maps MapsJS -->
+    <script src="{% static '/assets/libs/jsvectormap/maps/world-merc.js' %}"></script>
+
     <!-- Date & Time Picker JS -->
     <script src="{% static '/assets/libs/flatpickr/flatpickr.min.js' %}"></script>
-    <!-- Quill Editor JS -->
-    <script src="{% static '/assets/libs/quill/quill.min.js' %}"></script>
-    <!-- Filepond JS -->
-  
-    <!-- Internal Add Products JS -->
-    <script src="{% static '/assets/js/add-products.js' %}"></script>
+
+    <!-- Sales-Dashboard JS -->
+    <script src="{% static '/assets/js/sales-dashboard.js' %}"></script>
+
+    <!-- Custom-Switcher JS -->
+    <script src="{% static '/assets/js/custom-switcher.min.js' %}"></script>
+
     <!-- Custom JS -->
     <script src="{% static '/assets/js/custom.js' %}"></script>
   </body>

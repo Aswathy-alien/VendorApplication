@@ -1,5 +1,5 @@
 """
-URL configuration for vendordjango project.
+URL configuration for vendor_django project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/5.0/topics/http/urls/
@@ -19,6 +19,6 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('djangoapp.urls', namespace='djangoapp')),
+    path('', include('main_app.urls', namespace='main_app')),
     path('administrator/', include('administrator.urls', namespace='administrator')),
 ]

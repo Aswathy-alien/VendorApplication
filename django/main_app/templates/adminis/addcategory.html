@@ -78,21 +78,7 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css"
     />
-
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/1.12.1/css/dataTables.bootstrap5.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/responsive/2.3.0/css/responsive.bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/buttons/2.2.3/css/buttons.bootstrap5.min.css"
-    />
   </head>
-
   <body>
     <div class="page">
       <!-- app-header -->
@@ -319,7 +305,7 @@
               <!-- End::slide__category -->
               <!-- Start::slide -->
               <li class="slide">
-                <a href="dashboard.html" class="side-menu__item">
+                <a href="../adminis/dashboard.html" class="side-menu__item">
                   <i class="bx bx-home side-menu__icon"></i>
                   <span class="side-menu__label">Dashboard</span>
                 </a>
@@ -338,13 +324,13 @@
                   </li>
                   <li class="slide">
                     <a
-                      href="reviewproduct.html"
+                      href="../adminis/reviewproduct.html"
                       class="side-menu__item"
                       >Review Product</a
                     >
                   </li>
                   <li class="slide">
-                    <a href="viewproduct.html" class="side-menu__item"
+                    <a href="../adminis/viewproduct.html" class="side-menu__item"
                       >View Products</a
                     >
                   </li>
@@ -356,13 +342,13 @@
                     <ul class="slide-menu child2">
                       <li class="slide">
                         <a
-                          href="addcategory.html"
+                          href="../adminis/addcategory.html"
                           class="side-menu__item"
                           >Add Category</a
                         >
                       </li>
                       <li class="slide">
-                        <a href="viewcategory.html" class="side-menu__item"
+                        <a href="javascript:void(0);" class="side-menu__item"
                           >View Category</a
                         >
                       </li>
@@ -422,9 +408,7 @@
           <div
             class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb"
           >
-            <h1 class="page-title fw-semibold fs-18 mb-0">
-              View Product Category
-            </h1>
+            <h1 class="page-title fw-semibold fs-18 mb-0">Add Category</h1>
             <div class="ms-md-1 ms-0">
               <nav>
                 <ol class="breadcrumb mb-0">
@@ -432,60 +416,202 @@
                     <a href="#">Product Management</a>
                   </li>
                   <li class="breadcrumb-item active" aria-current="page">
-                    View Product Category
+                    Add Category
                   </li>
                 </ol>
               </nav>
             </div>
           </div>
           <!-- Page Header Close -->
-         <!-- Start::row-1 -->
-<div class="row">
-    <div class="col-xl-12">
-        <div class="card custom-card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <div class="card-title">View Categories</div>
-                <div>
-                    <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex" style="justify-content: flex-end !important;">
-                        <a href="addcategory.html" class="btn btn-primary m-1">Add New Category <i class="bi bi-plus-lg ms-2"></i></a>
+          <!-- Start::row-1 -->
+          <div class="row">
+            <div class="col-xl-12">
+                <div class="card custom-card">
+                    <div class="card-body add-products p-0">
+                        <form method="post" action="{% url 'main_app:adminaddcategory' %}" class="p-4">
+                            {% csrf_token %}
+                            <div class="row gx-5">
+                                <div class="col-xxl-6 col-xl-12 col-lg-12 col-md-6">
+                                    <div class="card custom-card shadow-none mb-0 border-0">
+                                        <div class="card-body p-0">
+                                            <div class="row gy-3">
+                                                <div class="col-xl-12">
+                                                    <label for="id_category_name" class="form-label">Category Name</label>
+                                                    {{ form.category_name }}
+                                                    <label for="id_category_name" class="form-label mt-1 fs-12 op-5 text-muted mb-0">
+                                                        *Category Name should not exceed 30 characters
+                                                    </label>
+                                                </div>
+                                                <div class="col-xl-12">
+                                                    <label for="id_category_description" class="form-label">Category Description</label>
+                                                    {{ form.category_description }}
+                                                    <label for="id_category_description" class="form-label mt-1 fs-12 op-5 text-muted mb-0">
+                                                        *Description should not exceed 500 letters
+                                                    </label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="px-4 py-3 border-top border-block-start-dashed d-sm-flex justify-content-end">
+                                <button type="submit" class="btn btn-primary-light m-1">Add Category <i class="bi bi-plus-lg ms-2"></i></button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
-            <div class="card-body">
-                <table id="responsivemodal-DataTable" class="table table-bordered" style="width:100%">
-                    <thead>
-                        <tr>
-                            <th>Category Name</th>
-                            <th>Description</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {% for category in categories %}
-                        <tr>
-                            <td>{{ category.category_name }}</td>
-                            <td>{{ category.category_description }}</td>
-                            <td>
-                                <div class="hstack gap-2 fs-15">
-                                    <a href="#" class="btn btn-icon btn-sm btn-info-light"><i class="ri-edit-line"></i></a>
-                                    <form action="{% url 'administrator:delete_category' category.id %}" method="post">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-icon btn-sm btn-danger-light product-btn"><i class="ri-delete-bin-line"></i></button>
-                                    </form>
-                                </div>
-                            </td>
-                        </tr>
-                        {% endfor %}
-                    </tbody>
-                </table>
-            </div>
         </div>
-    </div>
-</div>
-</div></div>
-<!-- End::row-1 -->
-
-  
+          <!--End::row-1 -->
+        </div>
+      </div>
+      <!-- End::app-content -->
+      <div
+        class="modal fade"
+        id="searchModal"
+        tabindex="-1"
+        aria-labelledby="searchModal"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-body">
+              <div class="input-group">
+                <a
+                  href="javascript:void(0);"
+                  class="input-group-text"
+                  id="Search-Grid"
+                >
+                  <i class="fe fe-search header-link-icon fs-18"></i>
+                </a>
+                <input
+                  type="search"
+                  class="form-control border-0 px-2"
+                  placeholder="Search"
+                  aria-label="Username"
+                />
+                <a
+                  href="javascript:void(0);"
+                  class="input-group-text"
+                  id="voice-search"
+                >
+                  <i class="fe fe-mic header-link-icon"></i>
+                </a>
+                <a
+                  href="javascript:void(0);"
+                  class="btn btn-light btn-icon"
+                  data-bs-toggle="dropdown"
+                  aria-expanded="false"
+                >
+                  <i class="fe fe-more-vertical"></i>
+                </a>
+                <ul class="dropdown-menu">
+                  <li>
+                    <a class="dropdown-item" href="#">Action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Another action</a>
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Something else here</a>
+                  </li>
+                  <li>
+                    <hr class="dropdown-divider" />
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="#">Separated link</a>
+                  </li>
+                </ul>
+              </div>
+              <div class="mt-4">
+                <p class="font-weight-semibold text-muted mb-2">
+                  Are You Looking For...
+                </p>
+                <span class="search-tags">
+                  <i class="fe fe-user me-2"></i>People
+                  <a href="javascript:void(0)" class="tag-addon">
+                    <i class="fe fe-x"></i>
+                  </a>
+                </span>
+                <span class="search-tags">
+                  <i class="fe fe-file-text me-2"></i>Pages
+                  <a href="javascript:void(0)" class="tag-addon">
+                    <i class="fe fe-x"></i>
+                  </a>
+                </span>
+                <span class="search-tags">
+                  <i class="fe fe-align-left me-2"></i>Articles
+                  <a href="javascript:void(0)" class="tag-addon">
+                    <i class="fe fe-x"></i>
+                  </a>
+                </span>
+                <span class="search-tags">
+                  <i class="fe fe-server me-2"></i>Tags
+                  <a href="javascript:void(0)" class="tag-addon">
+                    <i class="fe fe-x"></i>
+                  </a>
+                </span>
+              </div>
+              <div class="my-4">
+                <p class="font-weight-semibold text-muted mb-2">
+                  Recent Search :
+                </p>
+                <div
+                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
+                >
+                  <a href="notifications.html">
+                    <span>Notifications</span>
+                  </a>
+                  <a
+                    class="ms-auto lh-1"
+                    href="javascript:void(0);"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fe fe-x text-muted"></i>
+                  </a>
+                </div>
+                <div
+                  class="p-2 border br-5 d-flex align-items-center text-muted mb-2 alert"
+                >
+                  <a href="alerts.html">
+                    <span>Alerts</span>
+                  </a>
+                  <a
+                    class="ms-auto lh-1"
+                    href="javascript:void(0);"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fe fe-x text-muted"></i>
+                  </a>
+                </div>
+                <div
+                  class="p-2 border br-5 d-flex align-items-center text-muted mb-0 alert"
+                >
+                  <a href="mail.html">
+                    <span>Mail</span>
+                  </a>
+                  <a
+                    class="ms-auto lh-1"
+                    href="javascript:void(0);"
+                    data-bs-dismiss="alert"
+                    aria-label="Close"
+                  >
+                    <i class="fe fe-x text-muted"></i>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <div class="modal-footer">
+              <div class="btn-group ms-auto">
+                <button class="btn btn-sm btn-primary-light">Search</button>
+                <button class="btn btn-sm btn-primary">Clear Recents</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
       <!-- Footer Start -->
       <footer class="footer mt-auto py-3 bg-white text-center">
         <div class="container">
@@ -534,32 +660,9 @@
     <!-- Quill Editor JS -->
     <script src="{% static '/assets/libs/quill/quill.min.js' %}"></script>
     <!-- Filepond JS -->
-    <script src="{% static '/assets/libs/filepond/filepond.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-preview/filepond-plugin-image-preview.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-exif-orientation/filepond-plugin-image-exif-orientation.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-file-validate-size/filepond-plugin-file-validate-size.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-file-encode/filepond-plugin-file-encode.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-edit/filepond-plugin-image-edit.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-file-validate-type/filepond-plugin-file-validate-type.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-crop/filepond-plugin-image-crop.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-resize/filepond-plugin-image-resize.min.js' %}"></script>
-    <script src="{% static '/assets/libs/filepond-plugin-image-transform/filepond-plugin-image-transform.min.js' %}"></script>
+  
     <!-- Internal Add Products JS -->
     <script src="{% static '/assets/js/add-products.js' %}"></script>
-    <!-- Datatables Cdn -->
-    <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.12.1/js/dataTables.bootstrap5.min.js"></script>
-    <script src="https://cdn.datatables.net/responsive/2.3.0/js/dataTables.responsive.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/dataTables.buttons.min.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.print.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.6/pdfmake.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
-    <script src="https://cdn.datatables.net/buttons/2.2.3/js/buttons.html5.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-
-    <!-- Internal Datatables JS -->
-    <script src="{% static '../assets/js/datatables.js' %}"></script>
     <!-- Custom JS -->
     <script src="{% static '/assets/js/custom.js' %}"></script>
   </body>

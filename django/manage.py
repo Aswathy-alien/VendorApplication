@@ -6,19 +6,8 @@ import mysql.connector
 
 
 def main():
-    dataBase = mysql.connector.connect(
-        host="localhost",
-        user="root",
-        passwd="password",
-        database="test")
-
-    cursorObject = dataBase.cursor()
-
-    # disconnecting from server
-    dataBase.close()
-
     """Run administrative tasks."""
-    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vendordjango.settings')
+    os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vendor_django.settings')
     try:
         from django.core.management import execute_from_command_line
     except ImportError as exc:

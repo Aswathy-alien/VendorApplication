@@ -1,5 +1,5 @@
 """
-WSGI config for vendordjango project.
+WSGI config for vendor_django project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 
@@ -11,6 +11,6 @@ import os
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vendordjango.settings')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'vendor_django.settings')
 
 application = get_wsgi_application()

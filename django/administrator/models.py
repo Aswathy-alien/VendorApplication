@@ -7,17 +7,21 @@ class Product(models.Model):
     company = models.ForeignKey('Company', on_delete=models.CASCADE)
     name = models.CharField(max_length=255)
     type = models.CharField(max_length=100)
-    description = models.TextField()
+    description = models.TextField(null=True)
     cloud_type = models.CharField(max_length=100)
     business_areas = models.CharField(max_length=255)
-    modules = models.CharField(max_length=255)
-    financial_services_client_types = models.CharField(max_length=255)
-    additional_information = models.TextField()
+    modules = models.TextField(null=True)
+    financial_services_client_types = models.CharField(max_length=255, null=True)
+    additional_information = models.TextField(null=True)
     is_document_attached = models.BooleanField(default=False)
 
     class Meta:
         verbose_name_plural = 'Products'
         db_table = 'products'
+        indexes = [
+            models.Index(fields=['company'], name='company_idx'),
+            models.Index(fields=['name'], name='product_name_idx')
+        ]
 
 
 class ProductCategory(models.Model):
@@ -27,13 +31,13 @@ class ProductCategory(models.Model):
 
     class Meta:
         verbose_name_plural = 'Product Categories'
-        db_table = 'djangoapp_productcategory'
+        db_table = 'product_category'
         indexes = [
             models.Index(fields=['category_name'], name='category_name_idx'),
         ]
 
 
-class Companies(models.Model):
+class Company(models.Model):
     name = models.CharField(max_length=255, unique=True)
     website = models.TextField(null=True, blank=True)
     established_year = models.CharField(max_length=10, default='1964')
