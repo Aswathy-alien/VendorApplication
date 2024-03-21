@@ -2,16 +2,11 @@ from django.db import models
 from django.shortcuts import redirect, render
 
 class ProductCategory(models.Model):
-    id = models.BigAutoField(primary_key=True)
-    category_name = models.CharField(max_length=30, unique=True)
-    category_description = models.TextField()
-
+    category_name = models.CharField(max_length=30)
+    category_description = models.TextField(max_length=500)
     class Meta:
-        verbose_name_plural = 'Product Categories'
-        db_table = 'djangoapp_productcategory'
-        indexes = [
-            models.Index(fields=['category_name'], name='category_name_idx'),
-        ]
+     verbose_name_plural = 'Product Categories'
+     db_table = 'djangoapp_productcategory'
 
 class Companies(models.Model):
     name = models.CharField(max_length=255, unique=True)
