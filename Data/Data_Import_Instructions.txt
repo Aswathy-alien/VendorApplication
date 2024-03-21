@@ -1,5 +1,0 @@
-Step 1. run pip install mysqlclient
-Step 2. run pip install mysql-connector-python
-Step 3. Download and install jetbrains DataGrip
-Step 4. Open the SQL Files and copy the queries
-Step 5. Then import them to the database
