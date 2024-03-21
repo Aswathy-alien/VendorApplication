@@ -1,5 +1,7 @@
 # VendorApplication
 
+Install Django (If not installed already)
+
 ## Setting up Database Migrations and Seeding Data
 
 - Step 1. Create Migrations ```python manage.py makemigrations```
