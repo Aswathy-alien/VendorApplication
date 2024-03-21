@@ -1,20 +1,54 @@
 from django.db import models
 from django.shortcuts import redirect, render
 
+
+class Product(models.Model):
+    id = models.AutoField(primary_key=True)
+    company = models.ForeignKey('Company', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    description = models.TextField(null=True)
+    cloud_type = models.CharField(max_length=100)
+    business_areas = models.CharField(max_length=255)
+    modules = models.TextField(null=True)
+    financial_services_client_types = models.CharField(max_length=255, null=True)
+    additional_information = models.TextField(null=True)
+    is_document_attached = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Products'
+        db_table = 'products'
+
+
 class ProductCategory(models.Model):
-    category_name = models.CharField(max_length=30)
-    category_description = models.TextField(max_length=500)
+    id = models.BigAutoField(primary_key=True)
+    category_name = models.CharField(max_length=30, unique=True)
+    category_description = models.TextField()
+
+    class Meta:
+        verbose_name_plural = 'Product Categories'
+        db_table = 'product_category'
+        indexes = [
+            models.Index(fields=['category_name'], name='category_name_idx'),
+        ]
+
 
 class Company(models.Model):
-    id = models.AutoField(primary_key=True) 
-    name = models.CharField(max_length=255)
-    website = models.URLField()
-    established_year = models.PositiveIntegerField()
-    location_countries = models.CharField(max_length=255)
-    location_cities = models.CharField(max_length=255)
-    contact_telephone = models.CharField(max_length=20)
-    address = models.TextField()
-    employee_count = models.PositiveIntegerField()
-    has_internal_professional_services = models.BooleanField()
+    name = models.CharField(max_length=255, unique=True)
+    website = models.TextField(null=True, blank=True)
+    established_year = models.CharField(max_length=10, default='1964')
+    location_countries = models.JSONField(null=True, blank=True)
+    location_cities = models.JSONField(null=True, blank=True)
+    contact_telephone = models.JSONField(null=True, blank=True)
+    address = models.JSONField(null=True, blank=True)
+    employee_count = models.CharField(max_length=255, null=True, blank=True)
+    has_internal_professional_services = models.BooleanField(null=True, blank=True)
     last_demo_date = models.DateField(null=True, blank=True)
     last_reviewed_date = models.DateField(null=True, blank=True)
+
+    class Meta:
+        verbose_name_plural = 'Companies'
+        db_table = 'companies'
+
+    def __str__(self):
+        return self.name

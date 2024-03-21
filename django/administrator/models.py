@@ -1,6 +1,25 @@
 from django.db import models
 from django.shortcuts import redirect, render
 
+
+class Product(models.Model):
+    id = models.AutoField(primary_key=True)
+    company = models.ForeignKey('Company', on_delete=models.CASCADE)
+    name = models.CharField(max_length=255)
+    type = models.CharField(max_length=100)
+    description = models.TextField()
+    cloud_type = models.CharField(max_length=100)
+    business_areas = models.CharField(max_length=255)
+    modules = models.CharField(max_length=255)
+    financial_services_client_types = models.CharField(max_length=255)
+    additional_information = models.TextField()
+    is_document_attached = models.BooleanField(default=False)
+
+    class Meta:
+        verbose_name_plural = 'Products'
+        db_table = 'products'
+
+
 class ProductCategory(models.Model):
     id = models.BigAutoField(primary_key=True)
     category_name = models.CharField(max_length=30, unique=True)
@@ -12,6 +31,7 @@ class ProductCategory(models.Model):
         indexes = [
             models.Index(fields=['category_name'], name='category_name_idx'),
         ]
+
 
 class Companies(models.Model):
     name = models.CharField(max_length=255, unique=True)

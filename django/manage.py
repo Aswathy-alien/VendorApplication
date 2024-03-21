@@ -14,8 +14,6 @@ def main():
 
     cursorObject = dataBase.cursor()
 
-    
-
     # disconnecting from server
     dataBase.close()
 
