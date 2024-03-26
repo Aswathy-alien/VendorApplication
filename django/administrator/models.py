@@ -19,6 +19,7 @@ class Product(models.Model):
         related_name='products',
         blank=True
     )
+    logo = models.ImageField(upload_to='media/product_logos/', null=True, blank=True)  # Image logo field
 
     class Meta:
         verbose_name_plural = 'Products'
@@ -27,7 +28,6 @@ class Product(models.Model):
             models.Index(fields=['company'], name='company_idx'),
             models.Index(fields=['name'], name='product_name_idx')
         ]
-
 class ProductCategory(models.Model):
     id = models.BigAutoField(primary_key=True)
     category_name = models.CharField(max_length=30, unique=True)
