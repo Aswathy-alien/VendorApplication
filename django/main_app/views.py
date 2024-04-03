@@ -15,5 +15,6 @@ def register(request):
 
 def product_listing(request):
     return render(request, 'productlisting.html')
+
 def profile_page(request):
     return render(request, 'profilepage.html')
