@@ -13,7 +13,6 @@ def login(request):
 def register(request):
     return render(request, 'register.html')
 
+
 def product_listing(request):
     return render(request, 'productlisting.html')
-def profile_page(request):
-    return render(request, 'profilepage.html')
