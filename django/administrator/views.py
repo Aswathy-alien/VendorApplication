@@ -2,6 +2,9 @@
 from django.shortcuts import get_object_or_404, redirect, render
 from administrator.forms import ProductCategoryForm
 from administrator.models import Company, ProductCategory, Product  # Import the ProductCategory model
+from django.core.paginator import Paginator
+from django.db.models import Q
+
 
 
 def admin_dashboard(request):
@@ -32,8 +35,29 @@ def admin_review_product(request):
     return render(request, 'review_product.html')
 
 
+
 def admin_view_product(request):
-    return render(request, 'view_product.html')
+    search_query = request.GET.get('search', '')
+    products = Product.objects.select_related('company')
+
+    if search_query:
+        products = products.filter(
+            Q(name__icontains=search_query) |
+            Q(type__icontains=search_query) |
+            Q(company__name__icontains=search_query) |
+            Q(cloud_type__icontains=search_query) |
+            Q(business_areas__icontains=search_query)
+        )
+
+    products = products.order_by('id')
+    paginator = Paginator(products, 8)  # Show 10 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'products': page_obj,
+        'search_query': search_query
+    }
+    return render(request, 'view_product.html', context)
 
 
 def admin_view_category(request):
