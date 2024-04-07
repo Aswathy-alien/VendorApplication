@@ -71,3 +71,25 @@ def delete_category(request, category_id):
         category.delete()
         return redirect('../../view_category.html')
     return redirect('view_category.html')  # Redirect to appropriate URL after deletion
+
+
+
+def login(request):
+    if request.method == 'POST':
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+
+        try:
+            user = User.objects.get(username=username)
+        except User.DoesNotExist:
+            user = None
+
+        if user and user.check_password(password):
+            # If credentials match, set session variable
+            request.session['logged_in'] = True
+            return redirect('homepage')  # Redirect to the dashboard view
+        else:
+            # If credentials don't match, display error message
+            messages.error(request, 'Invalid username or password.')
+
+        return render(request, 'login.html')
