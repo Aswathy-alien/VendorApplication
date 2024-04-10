@@ -14,9 +14,16 @@ class Product(models.Model):
     financial_services_client_types = models.CharField(max_length=255, null=True)
     additional_information = models.TextField(null=True)
     is_document_attached = models.BooleanField(default=False)
+    category = models.ForeignKey(
+        'ProductCategory',
+        on_delete=models.SET_NULL,
+        related_name='products',
+        null=True,
+        blank=True
+    )
     categories = models.ManyToManyField(
         'ProductCategory',
-        related_name='products',
+        related_name='products_many',  # Change related_name for ManyToManyField
         blank=True
     )
     logo = models.ImageField(upload_to='media/product_logos/', null=True, blank=True)  # Image logo field

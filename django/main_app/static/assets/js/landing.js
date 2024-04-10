@@ -372,3 +372,11 @@ scrollToTop.onclick = () => {
     window.scrollTo(0, 0);
 };
 /* back to top */
+
+$(document).ready(function() {
+    $('#show-more-categories').click(function() {
+      $('#hidden-categories').show();
+      $(this).hide(); // Hide the "Show More" button after clicking
+    });
+  });
+  
