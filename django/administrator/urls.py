@@ -16,3 +16,5 @@ urlpatterns = [
     path('view_category', views.admin_view_category, name='admin_view_category'),
     path('delete_category/<int:category_id>/', views.delete_category, name='delete_category'),
 ]
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT) #new
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
