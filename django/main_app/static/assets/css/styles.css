@@ -2778,7 +2778,7 @@ typography
   color: #fff !important;
 }
 .btn-success:hover {
-  background-color: rgba(var(--success-rgb), 0.9) !important;
+  background-color: rgba(var(--success-rgb)) !important;
   border-color: rgb(var(--success-rgb)) !important;
   color: #fff;
 }
