@@ -1,11 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render,get_object_or_404
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.db.models import Q
-
-
-from administrator.models import Product, ProductCategory
-from main_app.models import home_productlist,home_categorieslist
+from django.shortcuts import redirect, render
 
 
 def index(request):
@@ -69,22 +63,3 @@ def product_listing(request):
 def profile_page(request):
     
     return render(request, 'profilepage.html')
-
-def product_detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
-    business_areas = product.business_areas.split(',') if product.business_areas else []
-    financial_services_client_types = product.financial_services_client_types.split(',') if product.financial_services_client_types else []
-
-    # Retrieve the categories of the given product
-    categories = product.categories.all()
-    
-    # Find other products that belong to any of these categories
-    similar_products = Product.objects.filter(categories__in=categories).exclude(id=product_id).distinct()
-
-    context = {
-        'product': product,
-        'business_areas': business_areas,
-        'financial_services_client_types': financial_services_client_types,
-        'similar_products': similar_products,
-    }
-    return render(request, 'product-details.html', context)

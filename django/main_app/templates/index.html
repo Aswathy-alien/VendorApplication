@@ -67,29 +67,55 @@
     />
   </head>
 
-  <body class="landing-body">
-    <div class="landing-page-wrapper">
-      <!-- app-header -->
-      <header class="app-header">
-        <!-- Start::main-header-container -->
-        <div class="main-header-container container-fluid">
-          <!-- Start::header-content-left -->
-          <div class="header-content-left">
-            <!-- Start::header-element -->
-            <div class="header-element">
-              <div class="horizontal-logo">
-                <a href="index" class="header-logo">
-                  <img
-                    src="{% static '/assets/images/brand-logos/toggle-logo.png' %}"
-                    alt="logo"
-                    class="toggle-logo"
-                  />
-                  <img
-                    src="{% static '/assets/images/brand-logos/toggle-dark.png' %}"
-                    alt="logo"
-                    class="toggle-dark"
-                  />
-                </a>
+  <body id="top">
+    <main>
+      <div id="sticky-wrapper" class="sticky-wrapper" style="height: 3.75rem;">
+        <nav class="navbar navbar-expand-lg">
+          <div class="container">
+            <!-- <a class="navbar-brand" href="index.html">
+                            <i class="bi-back"></i>
+                            <span>Topic</span>
+                        </a>
+                        -->
+
+            <div class="d-lg-none ms-auto me-4">
+              <a href="#top" class="navbar-icon bi-person smoothscroll"></a>
+            </div>
+
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarNav">
+              <ul class="navbar-nav ms-lg-5 me-lg-auto">
+                <li class="nav-item">
+                  <a class="nav-link click-scroll" href="#section_1">Home</a>
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link click-scroll" href="#section_2"
+                    >Browse Topics</a
+                  >
+                </li>
+
+                <li class="nav-item">
+                  <a class="nav-link click-scroll" href="#section_3">Contact</a>
+                </li>
+              </ul>
+
+              <div class="d-none d-lg-block">
+                <a
+                  href="{% url 'main_app:login' %}"
+                  class="navbar-icon bi-person smoothscroll"
+                ></a>
               </div>
             </div>
             <!-- End::header-element -->
@@ -110,140 +136,113 @@
             </div>
             <!-- End::header-element -->
           </div>
-          <!-- End::header-content-left -->
+        </div>
+      </section>
 
-          <!-- Start::header-content-right -->
-          <div class="header-content-right">
-            <!-- Start::header-element -->
-            <div class="header-element align-items-center">
-              <!-- Start::header-link|switcher-icon -->
-              <div class="btn-list d-lg-none d-block">
-                <a href="login" class="btn btn-primary-light"> Login </a>
-              </div>
-              <!-- End::header-link|switcher-icon -->
+      <section class="explore-section section-padding" id="section_2">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 text-center">
+              <h2 class="mb-4">
+                Discover top-tier offerings that stand out among the best
+                products available.
+              </h2>
+              <br />
+              <br />
+              <br />
             </div>
             <!-- End::header-element -->
           </div>
           <!-- End::header-content-right -->
         </div>
-        <!-- End::main-header-container -->
-      </header>
-      <!-- /app-header -->
 
-      <!-- Start::app-sidebar -->
-      <aside class="app-sidebar sticky" id="sidebar">
-        <div class="container p-0">
-          <!-- Start::main-sidebar -->
-          <div class="main-sidebar">
-            <!-- Start::nav -->
-            <nav class="main-menu-container nav nav-pills sub-open">
-              <div class="landing-logo-container">
-                <div class="horizontal-logo">
-                  <a href="index" class="header-logo">
-                    <img
-                      src="{% static '/assets/images/brand-logos/desktop-logo.png' %}"
-                      alt="logo"
-                      class="desktop-logo"
-                    />
-                    <img
-                      src="{% static '/assets/images/brand-logos/desktop-white.png' %}"
-                      alt="logo"
-                      class="desktop-white"
-                    />
-                  </a>
-                </div>
-              </div>
-              <div class="slide-left" id="slide-left">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#7b8191"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
+        <div class="container">
+          <div class="row1">
+            <div class="col-12">
+              <div class="tab-content" id="myTabContent">
+                <div
+                  class="tab-pane fade show active"
+                  id="design-tab-pane"
+                  role="tabpanel"
+                  aria-labelledby="design-tab"
+                  tabindex="0"
                 >
-                  <path
-                    d="M13.293 6.293 7.586 12l5.707 5.707 1.414-1.414L10.414 12l4.293-4.293z"
-                  ></path>
-                </svg>
-              </div>
-              <ul class="main-menu">
-                <!-- Start::slide -->
-                <li class="slide">
-                  <a class="side-menu__item" href="#home">
-                    <span class="side-menu__label">Home</span>
-                  </a>
-                </li>
-                <!-- End::slide -->
-                <!-- Start::slide -->
-                <li class="slide">
-                  <a href="productlisting" class="side-menu__item">
-                    <span class="side-menu__label">Product Search</span>
-                  </a>
-                </li>
-                <!-- End::slide -->
-              </ul>
-              <div class="slide-right" id="slide-right">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  fill="#7b8191"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    d="M10.707 17.707 16.414 12l-5.707-5.707-1.414 1.414L13.586 12l-4.293 4.293z"
-                  ></path>
-                </svg>
-              </div>
-              <div class="d-lg-flex d-none">
-                <div class="btn-list d-lg-flex d-none mt-lg-2 mt-xl-0 mt-0">
-                  <a href="login" class="btn btn-wave btn-primary">
-                    Login
-                  </a>
-                </div>
-              </div>
-            </nav>
-            <!-- End::nav -->
-          </div>
-          <!-- End::main-sidebar -->
-        </div>
-      </aside>
-      <!-- End::app-sidebar -->
+                  <div class="row">
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                      <div class="custom-block bg-white shadow-lg">
+                        <a href="productlisting.html">
+                          <div class="d-flex">
+                            <div>
+                              <h5 class="mb-2">ADDEPAR, INC.</h5>
 
-      <!-- Start::app-content -->
-      <div class="main-content landing-main">
-        <!-- Start:: Section-1 -->
-        <div class="landing-banner" id="home">
-          <section class="section">
-            <div class="container main-banner-container">
-              <div class="row">
-                <div class="col-xxl-12 col-xl-7 col-lg-7 col-md-8">
-                  <div class="py-lg-5">
-                    <center>
-                      <div class="mb-3">
-                        <h5 class="fw-semibold text-fixed-white op-9">
-                          Get the best software here!
-                        </h5>
-                      </div>
-                      <p class="landing-banner-heading mb-3">
-                        Explore, Experience, Excel with
-                        <span class="text-secondary">Citisoft !</span>
-                      </p>
-                      <div class="fs-16 mb-5 text-fixed-white op-7">
-                        Welcome to our Software Showcase!
-                      </div>
-                      <div class="col-xl-5">
-                        <div class="input-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Search for Products or Category Here"
-                            aria-label="Ask Here"
-                            aria-describedby="button-addon2"
+                              <p class="mb-0">
+                                Cloud Based Wealth Management|2009
+                              </p>
+                            </div>
+
+                            <span class="badge bg-design rounded-pill ms-auto"
+                              >1</span
+                            >
+                          </div>
+
+                          <img
+                            src="{% static 'images/topics/addepar.png' %}"
+                            class="custom-block-image img-fluid"
+                            alt=""
                           />
-                          <button class="btn btn-success btn-wave" type="button" onclick="searchProducts()">Search</button>
+                        </a>
+                      </div>
+                    </div>
 
-                                            </div>
+                    <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                      <div class="custom-block bg-white shadow-lg">
+                        <a href="productlisting.html">
+                          <div class="d-flex">
+                            <div>
+                              <h5 class="mb-2">ALLVUE</h5>
+
+                              <p class="mb-0">
+                                Cloud Based Alternative investment|2007
+                              </p>
+                            </div>
+
+                            <span class="badge bg-design rounded-pill ms-auto"
+                              >2</span
+                            >
+                          </div>
+
+                          <img
+                            src="{% static 'images/topics/allvue.png' %}"
+                            class="custom-block-image img-fluid"
+                            alt=""
+                          />
+                        </a>
+                      </div>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 col-12">
+                      <div class="custom-block bg-white shadow-lg">
+                        <a href="productlisting.html">
+                          <div class="d-flex">
+                            <div>
+                              <h5 class="mb-2">ALTHUB</h5>
+
+                              <p class="mb-0">
+                                Data Transformation, Alternative investment|2017
+                              </p>
+                            </div>
+
+                            <span class="badge bg-design rounded-pill ms-auto"
+                              >3</span
+                            >
+                          </div>
+
+                          <img
+                            src="{% static 'images/topics/althub1.png' %}"
+                            class="custom-block-image img-fluid"
+                            alt=""
+                          />
+                        </a>
                       </div>
                     </center>
                   </div>
@@ -274,48 +273,82 @@
                 <div class="row justify-content-evenly">
                   <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-12">
                     <div class="row">
-                      {% for product in products %}
-                      <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card custom-card product-card">
-                          <div class="card-body">
-                            <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="product-image">
-                              <img src="{{ product.logo.url }}" class="card-img mb-3" alt="...">
-                            </a>
-                            <div class="product-icons">
-                              <a href="wishlist" class="wishlist"><i class="ri-heart-line"></i></a>
-                              <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view"><i class="ri-eye-line"></i></a>
+                      <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                          <a href="productlisting.html">
+                            <div class="d-flex">
+                              <div>
+                                <h5 class="mb-2">CLOUD ATTRIBUTION</h5>
+
+                                <p class="mb-0">
+                                  Cloud Native Performance|2012
+                                </p>
+                              </div>
+
+                              <span class="badge bg-design rounded-pill ms-auto"
+                                >4</span
+                              >
                             </div>
-                            <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
-                              <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view">   {{ product.name }} </a>
-                              <span class="float-end text-warning fs-12">{{ product.rating }}<i class="ri-star-s-fill align-middle ms-1 d-inline-block"></i></span>
-                            </p>
-                            {% if product.categories.exists %}
-                            <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
-                                {% for category in product.categories.all %}
-                                    {{ category.category_name }}
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                                                          </p>
-                        {% else %}
-                            <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
-                                No Category Assigned
-                            </p>
-                        {% endif %}
-                          </div>
+
+                            <img
+                              src="{% static 'images/topics/cloud.jpeg' %}"
+                              class="custom-block-image img-fluid"
+                              alt=""
+                            />
+                          </a>
                         </div>
                       </div>
-                      {% endfor %}
-                    </div>
 
-                      <div class="mt-5">
-                        <button
-                          class="btn btn-primary"
-                          onclick="window.location.href='productlisting';"
-                        >
-                          View All
-                        </button>
+                      <div class="col-lg-4 col-md-6 col-12 mb-4 mb-lg-0">
+                        <div class="custom-block bg-white shadow-lg">
+                          <a href="productlisting.html">
+                            <div class="d-flex">
+                              <div>
+                                <h5 class="mb-2">BOC GROUP</h5>
 
+                                <p class="mb-0">
+                                  Cloud Enabled Enterprise Architecture|1995
+                                </p>
+                              </div>
 
+                              <span class="badge bg-design rounded-pill ms-auto"
+                                >5</span
+                              >
+                            </div>
+
+                            <img
+                              src="{% static 'images/topics/boc.png' %}"
+                              class="custom-block-image img-fluid"
+                              alt=""
+                            />
+                          </a>
+                        </div>
+                      </div>
+
+                      <div class="col-lg-4 col-md-6 col-12">
+                        <div class="custom-block bg-white shadow-lg">
+                          <a href="productlisting.html">
+                            <div class="d-flex">
+                              <div>
+                                <h5 class="mb-2">DU.CO</h5>
+
+                                <p class="mb-0">
+                                  Cloud Native Data Management|2010
+                                </p>
+                              </div>
+
+                              <span class="badge bg-design rounded-pill ms-auto"
+                                >6</span
+                              >
+                            </div>
+
+                            <img
+                              src="{% static 'images/topics/duco.png' %}"
+                              class="custom-block-image img-fluid"
+                              alt=""
+                            />
+                          </a>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -323,35 +356,41 @@
               </div>
             </div>
           </div>
-        </section>
-        <!-- End:: Section-2 -->
+        </div>
+      </section>
+      <section
+        class="contact-section section-padding section-bg"
+        id="section_3"
+      >
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-12 col-12">
+              <h3 class="mb-4 pb-2">Send your query right away!</h3>
+            </div>
 
-        <!-- Start:: Section-11 -->
-        <section class="section landing-footer text-fixed-white">
-          <div class="container">
-            <div class="row">
-              <div class="col-xl-3"></div>
-              <div class="col-xl-4">
-                <div class="px-4">
-                  <p class="fw-semibold mb-3">
-                    <a href="index"
-                      ><img
-                        src="{% static '/assets/images/brand-logos/desktop-dark.png' %}"
-                        alt=""
-                    /></a>
-                  </p>
-                  <p class="mb-2 op-6 fw-normal">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                    Reprehenderit et magnam, fuga est mollitia eius, quo illum
-                    illo inventore optio aut quas omnis rem. Dolores accusantium
-                    aspernatur minus ea incidunt.
-                  </p>
-                  <p class="mb-0 op-6 fw-normal">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit.
-                    Autem ea esse ad
-                  </p>
-                </div>
-              </div>
+            <div class="col-lg-6 col-12">
+              <form
+                action="#"
+                method="post"
+                class="custom-form contact-form"
+                role="form"
+              >
+                {% csrf_token %}
+                <div class="row">
+                  <div class="col-lg-6 col-md-6 col-12">
+                    <div class="form-floating">
+                      <input
+                        type="text"
+                        name="name"
+                        id="name"
+                        class="form-control"
+                        placeholder="Name"
+                        required=""
+                      />
+
+                      <label for="floatingInput">Name</label>
+                    </div>
+                  </div>
 
               <div class="col-xl-4">
                 <div class="px-4">
@@ -441,41 +480,13 @@
           </span>
         </div>
       </div>
-      <!-- End::app-content -->
-    </div>
+    </footer>
 
-    <div class="scrollToTop">
-      <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
-    </div>
-    <div id="responsive-overlay"></div>
-<script>
-  function searchProducts() {
-  var searchQuery = document.querySelector('.form-control').value;
-  window.location.href = '/productlisting?q=' + searchQuery;
-}
-</script>
-   <!-- Popper JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
-   <!-- Bootstrap JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-   <!-- Defaultmenu JS -->
-   <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
-   <!-- Node Waves JS-->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
-
-     <!-- Sticky JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
-     <!-- Simplebar JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.js"></script>
-     <!-- Color Picker JS -->
-     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
-
-
-    <!-- Internal Landing JS -->
-    <script src="{% static '/assets/js/landing.js' %}"></script>
-
-    <!-- Sticky JS -->
-    <script src="{% static '/assets/js/sticky.js' %}"></script>
+    <!-- JAVASCRIPT FILES -->
+    <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.sticky.js' %}"></script>
+    <script src="{% static 'js/click-scroll.js' %}"></script>
+    <script src="{% static 'js/custom.js' %}"></script>
   </body>
 </html>
