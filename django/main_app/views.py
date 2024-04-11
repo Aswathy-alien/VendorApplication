@@ -67,3 +67,7 @@ def product_listing(request):
 def profile_page(request):
     
     return render(request, 'profilepage.html')
+
+def product_details(request):
+    
+    return render(request, 'product-details.html')
