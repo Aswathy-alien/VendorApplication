@@ -78,7 +78,7 @@
             <!-- Start::header-element -->
             <div class="header-element">
               <div class="horizontal-logo">
-                <a href="index.html" class="header-logo">
+                <a href="index" class="header-logo">
                   <img
                     src="{% static '/assets/images/brand-logos/toggle-logo.png' %}"
                     alt="logo"
@@ -118,7 +118,7 @@
             <div class="header-element align-items-center">
               <!-- Start::header-link|switcher-icon -->
               <div class="btn-list d-lg-none d-block">
-                <a href="login.html" class="btn btn-primary-light"> Login </a>
+                <a href="login" class="btn btn-primary-light"> Login </a>
               </div>
               <!-- End::header-link|switcher-icon -->
             </div>
@@ -139,7 +139,7 @@
             <nav class="main-menu-container nav nav-pills sub-open">
               <div class="landing-logo-container">
                 <div class="horizontal-logo">
-                  <a href="index.html" class="header-logo">
+                  <a href="index" class="header-logo">
                     <img
                       src="{% static '/assets/images/brand-logos/desktop-logo.png' %}"
                       alt="logo"
@@ -169,14 +169,14 @@
               <ul class="main-menu">
                 <!-- Start::slide -->
                 <li class="slide">
-                  <a class="side-menu__item" href="index.html">
+                  <a class="side-menu__item" href="index">
                     <span class="side-menu__label">Home</span>
                   </a>
                 </li>
                 <!-- End::slide -->
                 <!-- Start::slide -->
                 <li class="slide">
-                  <a href="productlisting.html" class="side-menu__item">
+                  <a href="productlisting" class="side-menu__item">
                     <span class="side-menu__label">Product Search</span>
                   </a>
                 </li>
@@ -197,7 +197,7 @@
               </div>
               <div class="d-lg-flex d-none">
                 <div class="btn-list d-lg-flex d-none mt-lg-2 mt-xl-0 mt-0">
-                  <a href="login.html" class="btn btn-wave btn-primary">
+                  <a href="login" class="btn btn-wave btn-primary">
                     Login
                   </a>
                 </div>
@@ -257,7 +257,7 @@
                               </li>
                             </ul>
                             <form class="d-flex w-50" role="search" method="GET">
-                              <input style="border-color:#969595  !important;" class="form-control me-2 flex-grow-1" type="search" placeholder="Search Products here" aria-label="Search" name="q" value="{{ query }}">
+                              <input style="border-color:#969595  !important;" class="form-control me-2 flex-grow-1" type="search" placeholder="Search for Products or Category Here" aria-label="Search" name="q" value="{{ query }}">
                               <button class="btn btn-primary" type="submit">Search</button>
                             </form>
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-xxl-center">
@@ -381,26 +381,29 @@
                     <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
                       <div class="card custom-card product-card">
                         <div class="card-body">
-                          <a href="product-details.html" class="product-image">
+                          <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="product-image">
                             <img src="{{ product.logo.url }}" class="card-img mb-3" alt="...">
                           </a>
                           <div class="product-icons">
-                            <a href="wishlist.html" class="wishlist"><i class="ri-heart-line"></i></a>
-                            <a href="product-details.html" class="view"><i class="ri-eye-line"></i></a>
+                            <a href="wishlist" class="wishlist"><i class="ri-heart-line"></i></a>
+                            <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view"><i class="ri-eye-line"></i></a>
                           </div>
                           <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
-                            {{ product.name }}
+                            <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view">   {{ product.name }} </a>
                             <span class="float-end text-warning fs-12">{{ product.rating }}<i class="ri-star-s-fill align-middle ms-1 d-inline-block"></i></span>
                           </p>
-                          {% if product.category %}
-                          <p class="mb-1 fw-normal fs-12 d-flex align-items-center justify-content-between">
-                            {{ product.category.category_name }}
+                          {% if product.categories.exists %}
+                          <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
+                              {% for category in product.categories.all %}
+                                  {{ category.category_name }}
+                                  {% if not forloop.last %}, {% endif %}
+                              {% endfor %}
+                                                        </p>
+                      {% else %}
+                          <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
+                              No Category Assigned
                           </p>
-                          {% else %}
-                          <p class="mb-1 fw-normal fs-12 d-flex align-items-center justify-content-between">
-                            No Category Assigned
-                          </p>
-                          {% endif %}
+                      {% endif %}
                         </div>
                       </div>
                     </div>
@@ -448,7 +451,7 @@
               <div class="col-xl-4">
                 <div class="px-4">
                   <p class="fw-semibold mb-3">
-                    <a href="index.html"
+                    <a href="index"
                       ><img
                         src="{% static '/assets/images/brand-logos/desktop-dark.png' %}"
                         alt=""

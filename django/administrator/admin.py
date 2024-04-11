@@ -4,4 +4,7 @@ from django.contrib import admin
 from .models import Company, ProductCategory, Product;
 admin.site.register(Company)
 admin.site.register(ProductCategory)
-admin.site.register(Product)
+
+class ProductAdmin(admin.ModelAdmin):
+    filter_horizontal = ('Category',)  # Add this line to enable a horizontal filter widget
+    admin.site.register(Product)

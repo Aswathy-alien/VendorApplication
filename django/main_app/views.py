@@ -1,5 +1,5 @@
 from django.http import HttpResponse
-from django.shortcuts import redirect, render
+from django.shortcuts import redirect, render,get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
@@ -20,34 +20,36 @@ def login(request):
 
 def register(request):
     return render(request, 'register.html')
+def basetemp(request):
+    return render(request, 'basetemplate.html')
+def product_details(request):
+    return render(request, 'product-details.html')
 
 def product_listing(request):
-    # Fetch all products
     products = Product.objects.all()
-
-    # Fetch all categories
     categories = ProductCategory.objects.all()
 
-    # Filter products based on query parameter 'q' (search)
     query = request.GET.get('q', '')
-
-    # Filter categories based on search query
     selected_categories = request.GET.getlist('category', [])
-    category_remove = request.GET.get('category_remove')
-    if category_remove:
-        selected_categories.remove(category_remove)
-
-    # Filter products based on category
+    
+    if query:
+        products = Product.objects.filter(
+            Q(name__icontains=query) |
+            Q(description__icontains=query) |
+            Q(categories__category_name__icontains=query)
+        )
+    else:
+        products = Product.objects.all()
     if selected_categories:
-        products = products.filter(category__id__in=selected_categories)
+        products = products.filter(categories__id__in=selected_categories).distinct()
     else:
         products = products.filter(
-            Q(name__icontains=query) | Q(category__category_name__icontains=query)
-        )
+            Q(name__icontains=query) | Q(categories__category_name__icontains=query)
+        ).distinct()
 
-    # Pagination
     paginator = Paginator(products, 10)
     page = request.GET.get('page')
+
     try:
         products = paginator.page(page)
     except PageNotAnInteger:
@@ -55,19 +57,34 @@ def product_listing(request):
     except EmptyPage:
         products = paginator.page(paginator.num_pages)
 
-    # Context data
     context = {
         'products': products,
         'categories': categories,
         'selected_categories': selected_categories,
         'query': query,
     }
+
     return render(request, 'productlisting.html', context)
 
 def profile_page(request):
     
     return render(request, 'profilepage.html')
 
-def product_details(request):
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    business_areas = product.business_areas.split(',') if product.business_areas else []
+    financial_services_client_types = product.financial_services_client_types.split(',') if product.financial_services_client_types else []
+
+    # Retrieve the categories of the given product
+    categories = product.categories.all()
     
-    return render(request, 'product-details.html')
+    # Find other products that belong to any of these categories
+    similar_products = Product.objects.filter(categories__in=categories).exclude(id=product_id).distinct()
+
+    context = {
+        'product': product,
+        'business_areas': business_areas,
+        'financial_services_client_types': financial_services_client_types,
+        'similar_products': similar_products,
+    }
+    return render(request, 'product-details.html', context)
