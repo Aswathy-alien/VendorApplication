@@ -57,11 +57,11 @@ typography
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600&display=swap");
 :root {
   --body-bg-rgb:	240, 241, 247;
-  --primary-rgb:	132, 90, 223;
+  --primary-rgb:	17, 28, 67;
   --secondary-rgb:	35, 183, 229;
   --warning-rgb:	245, 184, 73;
   --info-rgb:	73, 182, 245;
-  --success-rgb:	38, 191, 148;
+  --success-rgb:	132, 90, 223,1;
   --danger-rgb:	230, 83, 60;
   --light-rgb:	243, 246, 248;
   --dark-rgb:	35, 35, 35;
@@ -78,7 +78,7 @@ typography
   --primary04:	rgba(var(--primary-rgb), 0.4);
   --primary05:	rgba(var(--primary-rgb), 0.5);
   --primary06:	rgba(var(--primary-rgb), 0.6);
-  --primary07:	rgba(var(--primary-rgb), 0.7);
+  --primary07:	rgba(var(--primary-rgb), 1);
   --primary08:	rgba(var(--primary-rgb), 0.8);
   --primary09:	rgba(var(--primary-rgb), 0.9);
   --primary005:	rgba(var(--primary-rgb), 0.05);
@@ -2778,7 +2778,7 @@ typography
   color: #fff !important;
 }
 .btn-success:hover {
-  background-color: rgba(var(--success-rgb), 0.9) !important;
+  background-color: rgba(var(--success-rgb)) !important;
   border-color: rgb(var(--success-rgb)) !important;
   color: #fff;
 }
@@ -5040,10 +5040,10 @@ typography
   border-color: var(--input-border);
   color: var(--default-text-color);
   background-color: var(--form-control-bg);
-  font-size: 0.875rem;
+  font-size: 0.9rem;
   font-weight: var(--default-font-weight);
-  line-height: 1.6;
-  border-radius: 0.35rem;
+  line-height: 2;
+  border-radius: 1.2rem;
   padding: 0.5rem 0.85rem;
 }
 .form-control:focus {
@@ -16870,6 +16870,10 @@ code[class*=language-] {
 
 .product-image img {
   background-color: rgb(var(--light-rgb));
+  width: 180px;
+  height: 180px;
+  object-fit: fit;
+
 }
 
 .product-card {
@@ -16879,7 +16883,7 @@ code[class*=language-] {
   display: block;
 }
 .product-card:hover .product-icons .wishlist,
-.product-card:hover .product-icons .cart,
+
 .product-card:hover .product-icons .view {
   position: absolute;
   width: 1.75rem;
@@ -16890,7 +16894,7 @@ code[class*=language-] {
   justify-content: center;
 }
 .product-card:hover .product-icons .wishlist i,
-.product-card:hover .product-icons .cart i,
+
 .product-card:hover .product-icons .view i {
   font-size: 0.9rem;
 }
@@ -16900,12 +16904,7 @@ code[class*=language-] {
   inset-block-start: 1.75rem;
   inset-inline-end: 1.75rem;
 }
-.product-card:hover .product-icons .cart {
-  background-color: rgba(var(--primary-rgb), 0.2);
-  color: var(--primary-color);
-  inset-block-start: 4rem;
-  inset-inline-end: 1.75rem;
-}
+
 .product-card:hover .product-icons .view {
   background-color: rgba(var(--success-rgb), 0.2);
   color: rgb(var(--success-rgb));
@@ -20172,7 +20171,7 @@ code[class*=language-] {
 }
 
 .text-primary {
-  color: var(--primary-color) !important;
+  color: #ab9759 !important;
   opacity: 1;
 }
 .text-primary.text-opacity-75 {
