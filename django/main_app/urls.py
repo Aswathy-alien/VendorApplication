@@ -14,5 +14,6 @@ urlpatterns = [
     path('basetemplate', views.basetemp, name='base_template'),
     path('product-details', views.product_details, name='product_details'),
     path('productlisting/<int:product_id>/', views.product_detail, name='product_detail'),
+    path('viewprofilepage', views.viewprofile_page, name='viewprofile_page')
 
 ]   
