@@ -27,6 +27,7 @@ class Migration(migrations.Migration):
                 ('has_internal_professional_services', models.BooleanField(blank=True, null=True)),
                 ('last_demo_date', models.DateField(blank=True, null=True)),
                 ('last_reviewed_date', models.DateField(blank=True, null=True)),
+                ('logo', models.ImageField(upload_to='media/company_logos/', blank=True, null=True)),
             ],
             options={
                 'verbose_name_plural': 'Companies',

@@ -169,7 +169,7 @@
               <ul class="main-menu">
                 <!-- Start::slide -->
                 <li class="slide">
-                  <a class="side-menu__item" href="#home">
+                  <a class="side-menu__item" href="index">
                     <span class="side-menu__label">Home</span>
                   </a>
                 </li>
@@ -180,14 +180,11 @@
                     <span class="side-menu__label">Product Search</span>
                   </a>
                 </li>
-                <!-- End::slide -->
-                <!-- Start::slide -->
-
                 <li class="slide">
-                  <a href="companylisting" class="side-menu__item">
-                    <span class="side-menu__label">Vendors List</span>
-                  </a>
-                </li>
+                    <a href="productlisting" class="side-menu__item">
+                      <span class="side-menu__label">Vendors List</span>
+                    </a>
+                  </li>
                 <!-- End::slide -->
               </ul>
               <div class="slide-right" id="slide-right">
@@ -221,39 +218,20 @@
       <!-- Start::app-content -->
       <div class="main-content landing-main">
         <!-- Start:: Section-1 -->
-        <div class="landing-banner" id="home">
+        <div class="landing-banner" style="height: 40vh !important; " id="home">
           <section class="section">
             <div class="container main-banner-container">
               <div class="row">
                 <div class="col-xxl-12 col-xl-7 col-lg-7 col-md-8">
-                  <div class="py-lg-5">
-                    <center>
-                      <div class="mb-3">
-                        <h5 class="fw-semibold text-fixed-white op-9">
-                          Get the best software here!
-                        </h5>
-                      </div>
-                      <p class="landing-banner-heading mb-3">
-                        Explore, Experience, Excel with
-                        <span class="text-secondary">Citisoft !</span>
-                      </p>
-                      <div class="fs-16 mb-5 text-fixed-white op-7">
-                        Welcome to our Software Showcase!
-                      </div>
-                      <div class="col-xl-5">
-                        <div class="input-group">
-                          <input
-                            type="text"
-                            class="form-control"
-                            placeholder="Search for Products or Category Here"
-                            aria-label="Ask Here"
-                            aria-describedby="button-addon2"
-                          />
-                          <button class="btn btn-success btn-wave" type="button" onclick="searchProducts()">Search</button>
-
-                                            </div>
-                      </div>
-                    </center>
+                  <div class="py-lg-3">
+                    <div class="mb-1">
+                      <h5 class="fs-25 fw-semibold text-fixed-white op-9">
+                        Vendors Search
+                      </h5>
+                    </div>
+                    <p class="fs-13 mb-5 text-fixed-white op-9">
+                      Home / <span class="text-secondary">Vendors Search</span>
+                    </p>
                   </div>
                 </div>
               </div>
@@ -261,78 +239,112 @@
           </section>
         </div>
         <!-- End:: Section-1 -->
-
-        <!-- Start:: Section-2 -->
-        <section class="section section-bg" id="statistics">
-          <div class="container text-center position-relative">
-            <p class="fs-12 fw-semibold text-success mb-1">
-              <span class="landing-section-heading">Softwares</span>
-            </p>
-            <h3 class="fw-semibold mb-2">
-              Discover top-tier offerings that stand out <br />among the best
-              products available.
-            </h3>
-            <div class="row justify-content-center">
-              <div class="col-xl-7">
-                <p class="text-muted fs-15 mb-5 fw-normal"></p>
-              </div>
-            </div>
-            <div class="row g-2 justify-content-center">
-              <div class="col-xl-12">
-                <div class="row justify-content-evenly">
-                  <div class="col-xxl-9 col-xl-8 col-lg-8 col-md-12">
-                    <div class="row">
-                      {% for product in products %}
-                      <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card custom-card product-card">
-                          <div class="card-body">
-                            <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="product-image">
-                              <img src="{{ product.logo.url }}" class="card-img mb-3" alt="...">
-                            </a>
-                            <div class="product-icons">
-                              <a href="wishlist" class="wishlist"><i class="ri-heart-line"></i></a>
-                              <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view"><i class="ri-eye-line"></i></a>
-                            </div>
-                            <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
-                              <a href="{% url 'main_app:product_detail' product_id=product.id %}" class="view">   {{ product.name }} </a>
-                              <span class="float-end text-warning fs-12">{{ product.rating }}<i class="ri-star-s-fill align-middle ms-1 d-inline-block"></i></span>
-                            </p>
-                            {% if product.categories.exists %}
-                            <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
-                                {% for category in product.categories.all %}
-                                    {{ category.category_name }}
-                                    {% if not forloop.last %}, {% endif %}
-                                {% endfor %}
-                                                          </p>
-                        {% else %}
-                            <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
-                                No Category Assigned
-                            </p>
-                        {% endif %}
+        <div class="main-content app-content">
+          <div class="container-fluid">
+            <div class="my-4">
+              <!-- Start::row-1 -->
+              <div class="row">
+                <div class="col-xl-12">
+                  <div class="card custom-card">
+                    <div class="card-body p-0">
+                      <nav class="navbar navbar-expand-xxl bg-white">
+                        <div class="container-fluid">
+                          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                          </button>
+                          <div class="collapse navbar-collapse navbar-justified flex-wrap gap-2 justify-content-start" id="navbarSupportedContent">
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-xxl-center">
+                              <li class="nav-item">
+                                <a class="nav-link" aria-current="page" href="javascript:void(0);"></a>
+                              </li>
+                              <li class="nav-item">
+                                <a class="nav-link" href="javascript:void(0);"></a>
+                              </li>
+                            </ul>
+                            <form class="d-flex w-50" role="search" method="GET">
+                              <input style="border-color:#969595  !important;" class="form-control me-2 flex-grow-1" type="search" placeholder="Search for Venodrs Here" aria-label="Search" name="q" value="{{ query }}">
+                              <button class="btn btn-primary" type="submit">Search</button>
+                            </form>
+                            <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-xxl-center">
+                              <li class="nav-item mb-xxl-0 mb-2 ms-xxl-0 ms-3">
+                                <div class="btn-group d-xxl-flex d-block">
+                                  <button class="btn btn-sm btn-primary-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort By
+                                  </button>
+                                  <ul class="dropdown-menu dropdown-menu-end">
+                                    <li><a class="dropdown-item" href="#">Featured</a></li>
+                                    <li><a class="dropdown-item" href="#">Newest</a></li>
+                                    <li><a class="dropdown-item" href="#">Ratings</a></li>
+                                  </ul>
+                                </div>
+                              </li>
+                            </ul>
                           </div>
                         </div>
-                      </div>
-                      {% endfor %}
-                    </div>
-
-                      <div class="mt-5">
-                        <button
-                          class="btn btn-primary"
-                          onclick="window.location.href='productlisting';"
-                        >
-                          View All
-                        </button>
-
-
-                      </div>
+                      </nav>
+                      <br /><br />
                     </div>
                   </div>
                 </div>
+        
+            
+              </div> 
+                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                  <div class="row">
+                    {% for company in companies %}
+                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                        <div class="card custom-card product-card">
+                            <div class="card-body">
+                              <a href="{% url 'main_app:company_details' company_id=company.id %}" class="product-image">
+                                <!-- Display company image -->
+                                <img src="{{ company.logo.url }}" class="card-img mb-3" alt="{{ company.name }}">
+                                <!-- Display company name -->
+                                
+                              </a>
+                              <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
+                                <a class="view">   {{ company.name }} </a>
+                                
+                              </p>
+                              
+                            </div>
+                          </div>
+                    </div>
+                    {% endfor %}
+                  </div>
+                
+        
+                  <!-- Pagination -->
+                  <ul class="pagination justify-content-end">
+                    {% if companies.has_previous %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">First</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ companies.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Previous</a>
+                    </li>
+                    {% endif %}
+        
+                    <li class="page-item disabled">
+                      <a class="page-link">Page {{ companies.number }} of {{ companies.paginator.num_pages }}</a>
+                    </li>
+        
+                    {% if companies.has_next %}
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ companies.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Next</a>
+                    </li>
+                    <li class="page-item">
+                      <a class="page-link" href="?page={{ companies.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Last</a>
+                    </li>
+                    {% endif %}
+                  </ul>
+                  <!-- Pagination -->
+                </div>
               </div>
+              <!--End::row-1 -->
             </div>
           </div>
-        </section>
-        <!-- End:: Section-2 -->
+        </div>
+        <!-- End::app-content -->
 
         <!-- Start:: Section-11 -->
         <section class="section landing-footer text-fixed-white">
@@ -456,34 +468,48 @@
       <span class="arrow"><i class="ri-arrow-up-s-fill fs-20"></i></span>
     </div>
     <div id="responsive-overlay"></div>
-<script>
-  function searchProducts() {
-  var searchQuery = document.querySelector('.form-control').value;
-  window.location.href = '/productlisting?q=' + searchQuery;
-}
-</script>
-   <!-- Popper JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
-   <!-- Bootstrap JS -->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-   <!-- Defaultmenu JS -->
-   <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
-   <!-- Node Waves JS-->
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
 
-     <!-- Sticky JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
-     <!-- Simplebar JS -->
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"></script>
-     <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.js"></script>
-     <!-- Color Picker JS -->
-     <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
+    <!-- Popper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/2.11.8/umd/popper.min.js"></script>
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
+    <!-- Defaultmenu JS -->
+    <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
+    <!-- Node Waves JS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/node-waves/0.7.6/waves.min.js"></script>
+    <!-- Sticky JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-js/1.3.0/sticky.min.js"></script>
+    <!-- Simplebar JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/simplebar/6.2.5/simplebar.js"></script>
+    <!-- Color Picker JS -->
+    <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
 
+    <!-- Swiper JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
 
-    <!-- Internal Landing JS -->
-    <script src="{% static '/assets/js/landing.js' %}"></script>
-
+    <!-- Defaultmenu JS -->
+    <script src="{% static '/assets/js/defaultmenu.min.js' %}"></script>
     <!-- Sticky JS -->
     <script src="{% static '/assets/js/sticky.js' %}"></script>
+    <!-- Internal Landing JS -->
+    <script src="{% static '/assets/js/landing.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+    <script>
+      $(document).ready(function() {
+  $('#show-more-categories').click(function() {
+    $('#hidden-categories').show();
+    $(this).hide();
+    $('#show-less-categories').removeClass('d-none'); // Show "Show Less" button
+  });
+
+  $('#show-less-categories').click(function() {
+    $('#hidden-categories').hide();
+    $(this).addClass('d-none'); // Hide "Show Less" button
+    $('#show-more-categories').show();
+  });
+});
+      </script>
   </body>
 </html>
