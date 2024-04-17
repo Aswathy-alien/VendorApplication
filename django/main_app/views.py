@@ -88,3 +88,7 @@ def product_detail(request, product_id):
         'similar_products': similar_products,
     }
     return render(request, 'product-details.html', context)
+
+def viewprofile_page(request):
+    
+    return render(request, 'viewprofilepage.html')
