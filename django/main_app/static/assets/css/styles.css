@@ -16862,6 +16862,15 @@ code[class*=language-] {
 [dir=rtl] .chat-footer .btn-send {
   transform: rotate(180deg);
 }
+/*Start:: Companies*/
+
+.company-logo {
+  background-color: rgb(var(--light-rgb));
+  width: 180px;
+  height: 180px;
+  object-fit: fit;
+}
+
 
 /* Start:: Products */
 .product-icons {
