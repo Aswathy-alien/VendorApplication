@@ -11,7 +11,8 @@ insert into
         employee_count,
         has_internal_professional_services,
         last_demo_date,
-        last_reviewed_date
+        last_reviewed_date,
+        logo
     )
 values
     (
@@ -26,7 +27,8 @@ values
         '"501 - 1,000"',
         0,
         '2023-01-18',
-        '2023-01-18'
+        '2023-01-18',
+        'media/company_logos/addepar.png'
     ),
     (
         2,
@@ -40,7 +42,8 @@ values
         '"1,000+"',
         1,
         null,
-        '2023-08-03'
+        '2023-08-03',
+        'media/company_logos/boc.png'
     ),
     (
         3,
@@ -54,7 +57,8 @@ values
         '"101-250"',
         1,
         '2023-02-08',
-        '2023-02-08'
+        '2023-02-08',
+        'media/company_logos/allvue.jpeg'
     ),
     (
         4,
@@ -68,7 +72,8 @@ values
         '"11-50"',
         0,
         '2023-02-23',
-        '2023-02-23'
+        '2023-02-23',
+        'media/company_logos/althub.jpeg'
     ),
     (
         5,
@@ -82,7 +87,8 @@ values
         '"11-50"',
         0,
         '2023-03-07',
-        '2023-07-13'
+        '2023-07-13',
+        'media/company_logos/alveo.png'
     ),
     (
         6,
@@ -96,7 +102,9 @@ values
         '"1,000+"',
         1,
         '2023-04-05',
-        '2023-04-05'
+        '2023-04-05',
+        'media/company_logos/appian.png'
+
     ),
     (
         7,
@@ -110,7 +118,9 @@ values
         '"51-100"',
         0,
         '2023-06-16',
-        '2023-06-16'
+        '2023-06-16',
+        'media/company_logos/cloudattribution.jpeg'
+
     ),
     (
         8,
@@ -124,7 +134,9 @@ values
         '"101-250"',
         0,
         '2023-08-02',
-        '2023-08-02'
+        '2023-08-02',
+        'media/company_logos/coherent.png'
+
     ),
     (
         9,
@@ -138,7 +150,9 @@ values
         '"101-250"',
         0,
         null,
-        '2023-05-04'
+        '2023-05-04',
+        'media/company_logos/duco.png'
+
     ),
     (
         10,
@@ -152,7 +166,8 @@ values
         '"51-100"',
         1,
         '2023-07-05',
-        '2023-07-05'
+        '2023-07-05',
+        'media/company_logos/dynamo.png'
     ),
     (
         11,
@@ -166,7 +181,8 @@ values
         '"101-250"',
         0,
         '2023-05-31',
-        '2023-07-21'
+        '2023-07-21',
+        'media/company_logos/ezops.png'
     ),
     (
         12,
@@ -180,7 +196,8 @@ values
         '"101-250"',
         1,
         '2023-08-05',
-        '2023-08-05'
+        '2023-08-05',
+        'media/company_logos/finbourne.png'
     ),
     (
         13,
@@ -194,7 +211,8 @@ values
         '"1-10"',
         0,
         '2022-12-02',
-        '2022-12-02'
+        '2022-12-02',
+        'media/company_logos/freyda.jpeg'
     ),
     (
         14,
@@ -208,7 +226,8 @@ values
         '"1,000+"',
         1,
         '2023-08-10',
-        '2023-08-10'
+        '2023-08-10',
+        'media/company_logos/ibm.png'
     ),
     (
         15,
@@ -222,5 +241,6 @@ values
         '"11-50"',
         0,
         '2022-11-16',
-        '2022-11-16'
+        '2022-11-16',
+        'media/company_logos/limina.jpeg'
     );

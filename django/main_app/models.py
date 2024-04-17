@@ -1,4 +1,4 @@
-from administrator.models import ProductCategory,Product    
+from administrator.models import ProductCategory,Product,Company  
 
 def home_productlist():
     last_8_items = Product.objects.order_by('-id')[:8]
