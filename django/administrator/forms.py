@@ -10,3 +10,4 @@ class ProductCategoryForm(forms.ModelForm):
             'category_name': forms.TextInput(attrs={'class': 'form-control'}),
             'category_description': forms.Textarea(attrs={'class': 'form-control'}),
         }
+

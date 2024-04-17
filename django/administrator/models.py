@@ -16,9 +16,9 @@ class Product(models.Model):
     is_document_attached = models.BooleanField(default=False)
     categories = models.ManyToManyField(
         'ProductCategory',
-        related_name='products',
-        blank=True
+        related_name='products'
     )
+    logo = models.ImageField(upload_to='media/product_logos/', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Products'
@@ -27,6 +27,9 @@ class Product(models.Model):
             models.Index(fields=['company'], name='company_idx'),
             models.Index(fields=['name'], name='product_name_idx')
         ]
+
+    def __str__(self):
+        return self.name
 
 class ProductCategory(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -40,9 +43,14 @@ class ProductCategory(models.Model):
             models.Index(fields=['category_name'], name='category_name_idx'),
         ]
 
+    def __str__(self):
+        return self.category_name
+
 
 class Company(models.Model):
+    id = models.BigAutoField(primary_key=True)
     name = models.CharField(max_length=255, unique=True)
+    description = models.TextField(null=True)
     website = models.TextField(null=True, blank=True)
     established_year = models.CharField(max_length=10, default='1964')
     location_countries = models.JSONField(null=True, blank=True)
@@ -53,6 +61,7 @@ class Company(models.Model):
     has_internal_professional_services = models.BooleanField(null=True, blank=True)
     last_demo_date = models.DateField(null=True, blank=True)
     last_reviewed_date = models.DateField(null=True, blank=True)
+    logo = models.ImageField(upload_to='media/company_logos/', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Companies'
