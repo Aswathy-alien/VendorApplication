@@ -4,7 +4,7 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
 
-from administrator.models import Product, ProductCategory
+from administrator.models import Product, ProductCategory, Company
 from main_app.models import home_productlist,home_categorieslist
 
 
@@ -92,3 +92,38 @@ def product_detail(request, product_id):
 def viewprofile_page(request):
     
     return render(request, 'viewprofilepage.html')
+
+
+
+def company_listing(request):
+    companies = Company.objects.all()
+    query = request.GET.get('q', '')
+    
+    
+    if query:
+        companies = Company.objects.filter(
+            Q(name__icontains=query)
+            
+        )
+    else:
+        companies = Company.objects.all()
+
+
+         
+    return render(request, 'companylisting.html', {'companies': companies})
+
+
+
+def company_details(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    products = Product.objects.filter(company=company)
+    categories = ProductCategory.objects.all()
+    context = {
+        'company': company,
+        'products' : products,
+        'categories' : categories
+        
+    }
+    return render(request, 'company-details.html', context)
+
+
