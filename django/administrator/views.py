@@ -133,3 +133,14 @@ def admin_edit_category(request, category_id):
         'category': category,
     }
     return render(request, 'edit_category.html',context)
+
+def admin_view_vendor_details(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    products = Product.objects.filter(company=company)
+    categories = ProductCategory.objects.all()
+    context = {
+        'company': company,
+        'products' : products,
+        'categories' : categories
+            }
+    return render(request, 'view_vendor_details.html', context)
