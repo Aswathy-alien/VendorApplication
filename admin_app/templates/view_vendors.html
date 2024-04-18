@@ -38,8 +38,6 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.css" />
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/themes/nano.min.css" />
 
-  <!-- Choices Css -->
-  <link rel="stylesheet" href="{% static '/assets/libs/choices.js/public/assets/styles/choices.min.css' %}" />
 </head>
 
 <body>
@@ -225,15 +223,15 @@
       <div class="container-fluid">
         <!-- Page Header -->
         <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-          <h1 class="page-title fw-semibold fs-18 mb-0">View Product</h1>
+          <h1 class="page-title fw-semibold fs-18 mb-0">View Vendors</h1>
           <div class="ms-md-1 ms-0">
             <nav>
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                  <a href="#">Product Management</a>
+                  <a href="#">User Management</a>
                 </li>
                 <li class="breadcrumb-item active" aria-current="page">
-                  View Product
+                  View Vendors
                 </li>
               </ol> 
             </nav>
@@ -253,7 +251,7 @@
                 <div class="col-md-9">
                   <div class="row mb-9">
 
-                    <div class="card-title">Products List</div>
+                    <div class="card-title">Vendor List</div>
                   </div>
                 </div>
                 <div class="row mb-9">
@@ -261,7 +259,7 @@
                     <form method="get">
                       <div class="input-group">
                         <input type="text" class="form-control" name="search" value="{{ search_query }}"
-                          placeholder="Search products...">
+                          placeholder="Search Vendor...">
                         <button class="btn btn-primary" type="submit">Search</button>
                       </div>
                     </form>
@@ -278,52 +276,37 @@
 
                       </tr>
                       <tr>
-                        <th scope="col">
-                          <input class="form-check-input check-all" type="checkbox" id="all-products" value=""
-                            aria-label="..." />
-                        </th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Cloud Type</th>
-                        <th scope="col">Business Areas</th>
-                        <th scope="col">Published</th>
+                        
+                        <th scope="col">Name</th>
+                        <th scope="col">Estd.</th>
+                        <th scope="col">Employee Count</th>
+                        <th scope="col">Locations</th>
+                        <th scope="col">Website</th>
                         <th scope="col">Action</th>
                       </tr>
                     </thead>
                     <tbody>
-                      {% for product in products %}
+                      {% for company in companies %}
                       <tr class="product-list">
-                        <td class="product-checkbox">
-                          <input class="form-check-input" type="checkbox" id="product{{ forloop.counter }}" value=""
-                            aria-label="..." />
-                        </td>
+                        
                         <td>
                           <div class="d-flex align-items-center">
                             <div class="me-2">
                               <span class="avatar avatar-xxl me-2">
-                                <img src="{{ product.logo }}" alt="" />
+                                <img src="{{ company.logo.url }}" alt="" />
                               </span>
                             </div>
-                            <div class="fw-semibold">{{ product.name }}</div>
+                            <div class="fw-semibold">{{ company.name }}</div>
                           </div>
                         </td>
-                        {% if product.categories.exists %}
-                        <td> {% for category in product.categories.all %}
-                          {{ category.category_name }}
-                          {% if not forloop.last %}, {% endif %}
-                      {% endfor %}</td>
-                      {% else %}
-                      <td>No Category Assigned</td>
-                      {% endif %}
-
-                        <td>{{ product.company.name }}</td>
-                        <td>{{ product.cloud_type }}</td>
-                        <td>{{ product.business_areas }}</td>
-                        <td>{{ product.published_date|date:"Y-m-d H:i:s" }}</td>
+                        <td>{{ company.established_year }}</td>
+                        <td>{{ company.employee_count }}</td>
+                        <td>{{ company.location_countries }}</td>
+                        <td><a href="{{ company.website }}" target="_blank">{{ company.website }}</a></td>
+                        
                         <td>
                           <div class="hstack gap-2 fs-15">
-                            <a href="{% url 'administrator:admin_view_product_details' product_id=product.id %}" class="btn btn-icon btn-sm btn-info-light">
+                            <a href="{% url 'administrator:admin_view_vendor_details' company_id=company.id %}" class="btn btn-icon btn-sm btn-info-light">
                               <i class="bi-eye"></i>
                             </a>
                             <!-- <a href="" class="btn btn-icon btn-sm btn-danger-light product-btn">
@@ -354,8 +337,8 @@
                       </li>
                       {% endif %}
 
-                      {% for page_num in products.paginator.page_range %}
-                      {% if page_num == products.number %}
+                      {% for page_num in companies.paginator.page_range %}
+                      {% if page_num == companies.number %}
                       <li class="page-item active" aria-current="page">
                         <span class="page-link">{{ page_num }}</span>
                       </li>
@@ -366,7 +349,7 @@
                       {% endif %}
                       {% endfor %}
 
-                      {% if products.has_next %}
+                      {% if companies.has_next %}
                       <li class="page-item">
                         <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
                       </li>
@@ -433,23 +416,12 @@
   <!-- Color Picker JS -->
   <script src="https://cdn.jsdelivr.net/npm/@simonwep/pickr@1.9.0/dist/pickr.min.js"></script>
 
-  <!-- Apex Charts JS -->
-  <script src="{% static '/assets/libs/apexcharts/apexcharts.min.js' %}"></script>
 
-  <!-- JSVector Maps JS -->
-  <script src="{% static '/assets/libs/jsvectormap/js/jsvectormap.min.js' %}"></script>
-
-  <!-- JSVector Maps MapsJS -->
-  <script src="{% static '/assets/libs/jsvectormap/maps/world-merc.js' %}"></script>
 
   <!-- Date & Time Picker JS -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 
-  <!-- Sales-Dashboard JS -->
-  <script src="{% static '/assets/js/sales-dashboard.js' %}"></script>
 
-  <!-- Custom-Switcher JS -->
-  <script src="{% static '/assets/js/custom-switcher.min.js' %}"></script>
 
   <!-- Custom JS -->
   <script src="{% static '/assets/js/custom.js' %}"></script>

@@ -78,7 +78,7 @@
         <!-- Start::header-content-right -->
         <div class="header-content-right">
           <!-- Start::header-element -->
-          
+
           <!-- End::header-element -->
 
           <!-- Start::header-element -->
@@ -105,7 +105,7 @@
                 <a class="dropdown-item d-flex" href="profile"><i
                     class="ti ti-user-circle fs-18 me-2 op-7"></i>Profile</a>
               </li>
-              
+
               <li>
                 <a class="dropdown-item d-flex" href="sign-in-cover"><i class="ti ti-logout fs-18 me-2 op-7"></i>Log
                   Out</a>
@@ -149,17 +149,17 @@
             <!-- End::slide__category -->
             <!-- Start::slide -->
             <li class="slide">
-              <a href="dashboard" class="side-menu__item">
+              <a href="../../dashboard" class="side-menu__item">
                 <i class="bx bx-home side-menu__icon"></i>
                 <span class="side-menu__label">Dashboard</span>
               </a>
             </li>
             <!-- End::slide -->
             <!-- Start::slide -->
-            <li class="slide has-sub">
+            <li class="slide has-sub ">
               <a href="javascript:void(0);" class="side-menu__item">
                 <i class="bx bx-store-alt side-menu__icon"></i>
-                <span class="side-menu__label">Product Management </span>
+                <span class="side-menu__label ">Product Management </span>
                 <i class="fe fe-chevron-right ri-arrow-down-s-line"></i>
               </a>
               <ul class="slide-menu child1">
@@ -167,20 +167,21 @@
                   <a href="javascript:void(0)"></a>
                 </li>
                 <li class="slide">
-                  <a href="review_product" class="side-menu__item">Review Product</a>
+                  <a href="../../review_product" class="side-menu__item">Review Product</a>
                 </li>
                 <li class="slide">
-                  <a href="view_product" class="side-menu__item">View Products</a>
+                  <a href="../../view_product" class="side-menu__item ">View Products</a>
                 </li>
+
                 <li class="slide has-sub">
                   <a href="javascript:void(0);" class="side-menu__item">Product Categories
                     <i class="fe fe-chevron-right ri-arrow-down-s-line"></i></a>
                   <ul class="slide-menu child2">
                     <li class="slide">
-                      <a href="add_category" class="side-menu__item">Add Category</a>
+                      <a href="../../add_category" class="side-menu__item">Add Category</a>
                     </li>
                     <li class="slide">
-                      <a href="view_category" class="side-menu__item">View Category</a>
+                      <a href="../../view_category" class="side-menu__item">View Category</a>
                     </li>
                   </ul>
                 </li>
@@ -188,10 +189,10 @@
               <!-- End::slide -->
               <!-- Start::slide -->
             </li>
-            <li class="slide has-sub">
+            <li class="slide has-sub active open">
               <a href="javascript:void(0);" class="side-menu__item">
                 <i class="bx bx-cart side-menu__icon"></i>
-                <span class="side-menu__label">User Management </span>
+                <span class="side-menu__label active">User Management </span>
                 <i class="fe fe-chevron-right ri-arrow-down-s-line"></i>
               </a>
               <ul class="slide-menu child1">
@@ -199,7 +200,7 @@
                   <a href="javascript:void(0)">Review Vendor Regis.</a>
                 </li>
                 <li class="slide">
-                  <a href="view_vendors" class="side-menu__item">View Vendor</a>
+                  <a href="../../view_vendors" class="side-menu__item active">View Vendor</a>
                 </li>
                 <li class="slide">
                   <a href="addvendor" class="side-menu__item">View Customers</a>
@@ -219,191 +220,210 @@
       <!-- End::main-sidebar -->
     </aside>
     <!-- End::app-sidebar -->
-
+    {% block content %}
     <!-- Start::app-content -->
+
     <div class="main-content app-content">
       <div class="container-fluid">
         <!-- Page Header -->
         <div class="d-md-flex d-block align-items-center justify-content-between my-4 page-header-breadcrumb">
-          <h1 class="page-title fw-semibold fs-18 mb-0">View Product</h1>
+          <h1 class="page-title fw-semibold fs-18 mb-0">View Vendor</h1>
           <div class="ms-md-1 ms-0">
             <nav>
               <ol class="breadcrumb mb-0">
                 <li class="breadcrumb-item">
-                  <a href="#">Product Management</a>
+                  <a href="#">User Management</a>
                 </li>
+                <li class="breadcrumb-item" aria-current="page">
+                  <a href="../../view_vendors">View vendor</a>
+                </li>
+
+
                 <li class="breadcrumb-item active" aria-current="page">
-                  View Product
+                  {{company.name}}
                 </li>
-              </ol> 
+              </ol>
             </nav>
           </div>
         </div>
         <!-- Page Header Close -->
-
-        <!-- Start::row-1 -->
         <div class="row">
           <div class="col-xl-12">
             <div class="card custom-card">
-              <div class="card-header">
-                {% block content %}
 
-
-
-                <div class="col-md-9">
-                  <div class="row mb-9">
-
-                    <div class="card-title">Products List</div>
-                  </div>
-                </div>
-                <div class="row mb-9">
-                  <div class="col-md-12">
-                    <form method="get">
-                      <div class="input-group">
-                        <input type="text" class="form-control" name="search" value="{{ search_query }}"
-                          placeholder="Search products...">
-                        <button class="btn btn-primary" type="submit">Search</button>
-                      </div>
-                    </form>
-                  </div>
-                </div>
-              </div>
               <div class="card-body">
-                <div class="table-responsive mb-4">
+                <div class="card-header">
 
 
-                  <table class="table text table-bordered">
-                    <thead>
-                      <tr style="width: 100%; padding-bottom: 20px;">
 
-                      </tr>
-                      <tr>
-                        <th scope="col">
-                          <input class="form-check-input check-all" type="checkbox" id="all-products" value=""
-                            aria-label="..." />
-                        </th>
-                        <th scope="col">Product</th>
-                        <th scope="col">Category</th>
-                        <th scope="col">Company</th>
-                        <th scope="col">Cloud Type</th>
-                        <th scope="col">Business Areas</th>
-                        <th scope="col">Published</th>
-                        <th scope="col">Action</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {% for product in products %}
-                      <tr class="product-list">
-                        <td class="product-checkbox">
-                          <input class="form-check-input" type="checkbox" id="product{{ forloop.counter }}" value=""
-                            aria-label="..." />
-                        </td>
-                        <td>
-                          <div class="d-flex align-items-center">
-                            <div class="me-2">
-                              <span class="avatar avatar-xxl me-2">
-                                <img src="{{ product.logo }}" alt="" />
-                              </span>
+
+                  <div class="col-md-9">
+                    <div class="row mb-9">
+
+                      <div class="card-title">Company Details</div>
+                    </div>
+                  </div>
+                </div>
+                <div class="row gx-5">
+                  <div class="col-xxl-2 col-xl-12 mt-5">
+                    <div class="row">
+                      <div class="col-xxl-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 mb-md-5 mb-3">
+                        
+                              <img class="img-fluid" src="{{ company.logo.url }}"
+                                alt="img" />
+                            
+                          
+                          
+                        
+                      </div>
+                      
+                    </div>
+                  </div>
+                  <div class="col-xxl-9 col-xl-12 mt-5">
+                    <div class="row gx-5">
+                      <div class="col-xl-12 mt-xxl-0 mt-3">
+                        <div>
+                          <p class="fs-26 fw-semibold mb-0">
+                            {{ company.name }}
+                          </p>
+                          <p class="fs-18 mb-4">
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-s-fill text-warning align-middle"></i>
+                            <i class="ri-star-half-s-fill text-warning align-middle"></i>
+                            <span class="fw-semibold text-muted ms-1">4.3<a class="text-info"
+                                href="javascript:void(0);">(Reviews)</a></span>
+                          </p>
+                          <div class="mb-4">
+                            <p class="fs-15 fw-semibold mb-1">
+                              Description :
+                            </p>
+                            <p class="text-muted mb-0">
+                              {{ company.description }}
+                            </p>
+                          </div>
+
+
+                          <div class="mb-4">
+                            <p class="fs-15 fw-semibold mb-2">
+                              Vendor Details :
+                            </p>
+                            <div class="row">
+                              <div class="col-xl-10">
+                                <div class="table-responsive">
+                                  <table class="table table-bordered text-nowrap">
+                                    <tbody>
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                            Name
+                                        </th>
+                                        <td>{{ company.name }}</td>
+                                      </tr>
+                                      
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Established Year
+                                        </th>
+                                        <td>{{ company.established_year}}"</td>
+                                      </tr>
+
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Website
+                                        </th>
+                                        <td> {% if company.website %}
+                                          <a href="{{ company.website }}"target="_blank">{{ company.website }}</a>
+                                          {% else %}
+                                          <p>No website available</p>
+                                          {% endif %}
+                                        </td>
+                                      </tr>
+
+                                      
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Location Countries
+                                        </th>
+                                        <td>{{company.location_countries}}</td>
+                                      </tr>
+
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Location Cities
+                                        </th>
+                                        <td>{{company.location_cities}}</td>
+                                      </tr>
+
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Employee Count
+                                        </th>
+                                        <td>{{company.employee_count}}</td>
+                                      </tr>
+
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Internal Professional Services
+                                        </th>
+                                        <td>{{company.has_internal_professional_services}}</td>
+                                      </tr>
+
+                                      <tr>
+                                        <th scope="row" class="fw-semibold">
+                                          Address
+                                        </th>
+                                        <td>{{company.address}}</td>
+                                      </tr>
+                                      
+                                    </tbody>
+                                  </table>
+                                </div>
+                              </div>
                             </div>
-                            <div class="fw-semibold">{{ product.name }}</div>
                           </div>
-                        </td>
-                        {% if product.categories.exists %}
-                        <td> {% for category in product.categories.all %}
-                          {{ category.category_name }}
-                          {% if not forloop.last %}, {% endif %}
-                      {% endfor %}</td>
-                      {% else %}
-                      <td>No Category Assigned</td>
-                      {% endif %}
 
-                        <td>{{ product.company.name }}</td>
-                        <td>{{ product.cloud_type }}</td>
-                        <td>{{ product.business_areas }}</td>
-                        <td>{{ product.published_date|date:"Y-m-d H:i:s" }}</td>
-                        <td>
-                          <div class="hstack gap-2 fs-15">
-                            <a href="{% url 'administrator:admin_view_product_details' product_id=product.id %}" class="btn btn-icon btn-sm btn-info-light">
-                              <i class="bi-eye"></i>
-                            </a>
-                            <!-- <a href="" class="btn btn-icon btn-sm btn-danger-light product-btn">
-                              <i class="ri-delete-bin-line"></i>
-                            </a> -->
-                          </div>
-                        </td>
-                      </tr>
-                      {% empty %}
-                      <tr>
-                        <td colspan="8" class="text-center">No products found.</td>
-                      </tr>
-                      {% endfor %}
-                    </tbody>
-                  </table>
+                          
+                   
+                        </div>
+                        <div class="row"><!--product they offer list-->
+                            
+                         </div>
 
+
+
+                      
+                      
+                    </div>
+                  </div>
                 </div>
-                <div class="d-flex align-items-center justify-content-between flex-wrap">
-                  <nav aria-label="Pagination">
-                    <ul class="pagination mb-0">
-                      {% if products.has_previous %}
-                      <li class="page-item">
-                        <a class="page-link" href="?page={{ products.previous_page_number }}">Previous</a>
-                      </li>
-                      {% else %}
-                      <li class="page-item disabled">
-                        <span class="page-link">Previous</span>
-                      </li>
-                      {% endif %}
-
-                      {% for page_num in products.paginator.page_range %}
-                      {% if page_num == products.number %}
-                      <li class="page-item active" aria-current="page">
-                        <span class="page-link">{{ page_num }}</span>
-                      </li>
-                      {% else %}
-                      <li class="page-item">
-                        <a class="page-link" href="?page={{ page_num }}">{{ page_num }}</a>
-                      </li>
-                      {% endif %}
-                      {% endfor %}
-
-                      {% if products.has_next %}
-                      <li class="page-item">
-                        <a class="page-link" href="?page={{ products.next_page_number }}">Next</a>
-                      </li>
-                      {% else %}
-                      <li class="page-item disabled">
-                        <span class="page-link">Next</span>
-                      </li>
-                      {% endif %}
-                    </ul>
-                  </nav>
-                  <!-- <button class="btn btn-danger btn-wave m-1">Delete All</button> -->
-                </div>
-                {% endblock %}
               </div>
             </div>
           </div>
         </div>
+        {% endblock %}
+        <!--End::row-1 -->
         <!--End::row-1 -->
       </div>
     </div>
-    <!-- End::app-content -->
+  </div>
+  <!-- End::app-content -->
 
-    <!-- Footer Start -->
-    <footer class="footer mt-auto py-3 bg-white text-center">
-      <div class="container">
-        <span class="text-muted">
-          Copyright © <span id="year"></span>
-          <a href="javascript:void(0);" class="text-dark fw-semibold">Citisodt</a>. Designed with
-          <span class="bi bi-heart-fill text-danger"></span> by
-          <a href="javascript:void(0);">
-            <span class="fw-semibold text-primary text-decoration-underline">Citisoft</span>
-          </a>
-          All rights reserved
-        </span>
-      </div>
-    </footer>
-    <!-- Footer End -->
+  <!-- Footer Start -->
+  <footer class="footer mt-auto py-3 bg-white text-center">
+    <div class="container">
+      <span class="text-muted">
+        Copyright © <span id="year"></span>
+        <a href="javascript:void(0);" class="text-dark fw-semibold">Citisodt</a>. Designed with
+        <span class="bi bi-heart-fill text-danger"></span> by
+        <a href="javascript:void(0);">
+          <span class="fw-semibold text-primary text-decoration-underline">Citisoft</span>
+        </a>
+        All rights reserved
+      </span>
+    </div>
+  </footer>
+  <!-- Footer End -->
   </div>
 
   <div class="scrollToTop">

@@ -83,5 +83,78 @@ def delete_category(request, category_id):
     category = get_object_or_404(ProductCategory, id=category_id)
     if request.method == 'POST':
         category.delete()
-        return redirect('../../view_category.html')
-    return redirect('view_category.html')  # Redirect to appropriate URL after deletion
+        return redirect('../view_category')
+    return redirect('../view_category')  # Redirect to appropriate URL after deletion
+
+
+def admin_view_product_details(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
+    business_areas = product.business_areas.split(',') if product.business_areas else []
+    financial_services_client_types = product.financial_services_client_types.split(',') if product.financial_services_client_types else []
+
+    # Retrieve the categories of the given product
+    categories = product.categories.all()
+    
+    # Find other products that belong to any of these categories
+    similar_products = Product.objects.filter(categories__in=categories).exclude(id=product_id).distinct()
+
+    context = {
+        'product': product,
+        'business_areas': business_areas,
+        'financial_services_client_types': financial_services_client_types,
+        'similar_products': similar_products,
+    }
+    return render(request, 'view_product_details.html', context)
+
+def admin_view_vendors(request):
+    companies = Company.objects.all()
+    search_query = request.GET.get('search', '')
+
+    if search_query:
+        companies = companies.filter(
+            Q(name__icontains=search_query) |
+            Q(website__icontains=search_query) |
+            Q(location_countries__icontains=search_query) |
+            Q(location_cities__icontains=search_query) |
+            Q(address__icontains=search_query)
+        )
+
+    companies = companies.order_by('id')
+    paginator = Paginator(companies, 8)  # Show 8 companies per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+
+    context = {
+        'companies': page_obj,
+        'search_query': search_query,
+    }
+
+    return render(request, 'view_vendors.html', context)
+
+def admin_edit_category(request, category_id):
+    category = get_object_or_404(ProductCategory, id=category_id)
+
+    if request.method == 'POST':
+        form = ProductCategoryForm(request.POST, instance=category)
+        if form.is_valid():
+            form.save()
+            return redirect('../../view_category')  # Redirect to the category list page after updating
+    else:
+        form = ProductCategoryForm(instance=category)
+
+    context = {
+        'form': form,
+        'category': category,
+    }
+    return render(request, 'edit_category.html',context)
+
+def admin_view_vendor_details(request, company_id):
+    company = get_object_or_404(Company, id=company_id)
+    products = Product.objects.filter(company=company)
+    categories = ProductCategory.objects.all()
+    context = {
+        'company': company,
+        'products' : products,
+        'categories' : categories
+            }
+    return render(request, 'view_vendor_details.html', context)
