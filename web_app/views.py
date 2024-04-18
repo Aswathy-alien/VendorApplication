@@ -128,7 +128,7 @@ def product_detail(request, product_id):
     categories = product.categories.all()
 
     # Find other products that belong to any of these categories
-    similar_products = Product.objects.filter(categories__in=categories).exclude(id=product_id).distinct()
+    similar_products = Product.objects.filter(categories__in=categories).exclude(name=product_name).distinct()
 
     context = {
         'product': product,
@@ -144,7 +144,6 @@ def viewprofile_page(request):
 
 
 def company_listing(request):
-    companies = Company.objects.all()
     query = request.GET.get('q', '')
 
     if query:

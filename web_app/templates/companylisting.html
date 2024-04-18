@@ -181,10 +181,10 @@
                   </a>
                 </li>
                 <li class="slide">
-                    <a href="productlisting" class="side-menu__item">
-                      <span class="side-menu__label">Vendors List</span>
-                    </a>
-                  </li>
+                  <a href="companylisting" class="side-menu__item">
+                    <span class="side-menu__label">Vendors List</span>
+                  </a>
+                </li>
                 <!-- End::slide -->
               </ul>
               <div class="slide-right" id="slide-right">
@@ -226,11 +226,11 @@
                   <div class="py-lg-3">
                     <div class="mb-1">
                       <h5 class="fs-25 fw-semibold text-fixed-white op-9">
-                        Vendors Search
+                        Vendor Search
                       </h5>
                     </div>
                     <p class="fs-13 mb-5 text-fixed-white op-9">
-                      Home / <span class="text-secondary">Vendors Search</span>
+                      Home / <span class="text-secondary">Vendor Search</span>
                     </p>
                   </div>
                 </div>
@@ -262,21 +262,12 @@
                               </li>
                             </ul>
                             <form class="d-flex w-50" role="search" method="GET">
-                              <input style="border-color:#969595  !important;" class="form-control me-2 flex-grow-1" type="search" placeholder="Search for Venodrs Here" aria-label="Search" name="q" value="{{ query }}">
+                              <input style="border-color:#969595  !important;" class="form-control me-2 flex-grow-1" type="search" placeholder="Search for Company Here" aria-label="Search" name="q" value="{{ query }}">
                               <button class="btn btn-primary" type="submit">Search</button>
                             </form>
                             <ul class="navbar-nav ms-auto mb-2 mb-lg-0 align-items-xxl-center">
                               <li class="nav-item mb-xxl-0 mb-2 ms-xxl-0 ms-3">
-                                <div class="btn-group d-xxl-flex d-block">
-                                  <button class="btn btn-sm btn-primary-light dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                    Sort By
-                                  </button>
-                                  <ul class="dropdown-menu dropdown-menu-end">
-                                    <li><a class="dropdown-item" href="#">Featured</a></li>
-                                    <li><a class="dropdown-item" href="#">Newest</a></li>
-                                    <li><a class="dropdown-item" href="#">Ratings</a></li>
-                                  </ul>
-                                </div>
+                               
                               </li>
                             </ul>
                           </div>
@@ -287,57 +278,27 @@
                   </div>
                 </div>
         
-            
-              </div> 
-                <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12">
+                                            <div class="col-xxl-12 col-xl-9 col-lg-8 col-md-12 ">
                   <div class="row">
                     {% for company in companies %}
-                    <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-6 col-sm-12">
-                        <div class="card custom-card product-card">
-                            <div class="card-body">
-                              <a href="{% url 'main_app:company_details' company_id=company.id %}" class="product-image">
-                                <!-- Display company image -->
-                                <img src="{{ company.logo.url }}" class="card-img mb-3" alt="{{ company.name }}">
-                                <!-- Display company name -->
-                                
-                              </a>
-                              <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
-                                <a class="view">   {{ company.name }} </a>
-                                
-                              </p>
-                              
-                            </div>
-                          </div>
+                    <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-6 col-sm-12">
+                      <div class="card custom-card product-card">
+                        <div class="card-body">
+                          <a href="{% url 'main_app:company_details' company_id=company.id %}" class="product-image">
+                            <img src="{{ company.logo.url }}" class="card-img mb-3 " alt="...">
+                          </a>
+                          
+                          <p class="product-name fw-semibold mb-0 d-flex align-items-center justify-content-between">
+                            <a href="{% url 'main_app:company_details' company_id=company.id %}" class="view">   {{ company.name }} </a>
+                          </p>
+                          
+                        </div>
+                      </div>
                     </div>
                     {% endfor %}
                   </div>
-                
         
-                  <!-- Pagination -->
-                  <ul class="pagination justify-content-end">
-                    {% if companies.has_previous %}
-                    <li class="page-item">
-                      <a class="page-link" href="?page=1{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">First</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="?page={{ companies.previous_page_number }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Previous</a>
-                    </li>
-                    {% endif %}
-        
-                    <li class="page-item disabled">
-                      <a class="page-link">Page {{ companies.number }} of {{ companies.paginator.num_pages }}</a>
-                    </li>
-        
-                    {% if companies.has_next %}
-                    <li class="page-item">
-                      <a class="page-link" href="?page={{ companies.next_page_number }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Next</a>
-                    </li>
-                    <li class="page-item">
-                      <a class="page-link" href="?page={{ companies.paginator.num_pages }}{% if query %}&q={{ query }}{% endif %}{% if selected_categories %}&category={{ selected_categories|join:',' }}{% endif %}{% if selected_locations %}&location={{ selected_locations|join:',' }}{% endif %}{% if selected_review %}&review={{ selected_review }}{% endif %}">Last</a>
-                    </li>
-                    {% endif %}
-                  </ul>
-                  <!-- Pagination -->
+                 
                 </div>
               </div>
               <!--End::row-1 -->
@@ -345,7 +306,7 @@
           </div>
         </div>
         <!-- End::app-content -->
-
+        
         <!-- Start:: Section-11 -->
         <section class="section landing-footer text-fixed-white">
           <div class="container">
@@ -495,7 +456,7 @@
     <!-- Internal Landing JS -->
     <script src="{% static '/assets/js/landing.js' %}"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-
+    <script src="{% static '/assets/js/animations.js' %}"></script>
     <script>
       $(document).ready(function() {
   $('#show-more-categories').click(function() {

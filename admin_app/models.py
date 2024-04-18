@@ -17,7 +17,7 @@ class Product(models.Model):
         'ProductCategory',
         related_name='products'
     )
-    logo = models.ImageField(upload_to='media/product_logos/', null=True, blank=True)
+    logo = models.ImageField(upload_to='product_logos/', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Products'
@@ -61,7 +61,7 @@ class Company(models.Model):
     has_internal_professional_services = models.BooleanField(null=True, blank=True)
     last_demo_date = models.DateField(null=True, blank=True)
     last_reviewed_date = models.DateField(null=True, blank=True)
-    logo = models.ImageField(upload_to='media/company_logos/', null=True, blank=True)
+    logo = models.ImageField(upload_to='company_logos/', null=True, blank=True)
 
     class Meta:
         verbose_name_plural = 'Companies'

@@ -78,32 +78,7 @@
         <!-- Start::header-content-right -->
         <div class="header-content-right">
           <!-- Start::header-element -->
-          <div class="header-element header-search">
-            <!-- Start::header-link -->
-            <a href="javascript:void(0);" class="header-link" data-bs-toggle="modal" data-bs-target="#searchModal">
-              <i class="bx bx-search-alt-2 header-link-icon"></i>
-            </a>
-            <!-- End::header-link -->
-          </div>
-          <!-- End::header-element -->
-
-          <!-- Start::header-element -->
-          <div class="header-element header-theme-mode">
-            <!-- Start::header-link|layout-setting -->
-            <a href="javascript:void(0);" class="header-link layout-setting">
-              <span class="light-layout">
-                <!-- Start::header-link-icon -->
-                <i class="bx bx-moon header-link-icon"></i>
-                <!-- End::header-link-icon -->
-              </span>
-              <span class="dark-layout">
-                <!-- Start::header-link-icon -->
-                <i class="bx bx-sun header-link-icon"></i>
-                <!-- End::header-link-icon -->
-              </span>
-            </a>
-            <!-- End::header-link|layout-setting -->
-          </div>
+          
           <!-- End::header-element -->
 
           <!-- Start::header-element -->
@@ -113,7 +88,7 @@
               data-bs-auto-close="outside" aria-expanded="false">
               <div class="d-flex align-items-center">
                 <div class="me-sm-2 me-0">
-                  <img src="{% static '/assets/images/faces/9.jpg' %}" alt="img" width="32" height="32"
+                  <img src="{% static '/assets/images/ecommerce/png/9.png' %}" alt="img" width="32" height="32"
                     class="rounded-circle" />
                 </div>
                 <div class="d-sm-block d-none">
@@ -130,31 +105,10 @@
                 <a class="dropdown-item d-flex" href="profile"><i
                     class="ti ti-user-circle fs-18 me-2 op-7"></i>Profile</a>
               </li>
+              
               <li>
-                <a class="dropdown-item d-flex" href="mail"><i class="ti ti-inbox fs-18 me-2 op-7"></i>Inbox
-                  <span class="badge bg-success-transparent ms-auto">25</span></a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex border-block-end" href="to-do-list"><i
-                    class="ti ti-clipboard-check fs-18 me-2 op-7"></i>Task
-                  Manager</a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex" href="mail-settings"><i
-                    class="ti ti-adjustments-horizontal fs-18 me-2 op-7"></i>Settings</a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex border-block-end" href="javascript:void(0);"><i
-                    class="ti ti-wallet fs-18 me-2 op-7"></i>Bal:
-                  $7,12,950</a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex" href="chat"><i
-                    class="ti ti-headset fs-18 me-2 op-7"></i>Support</a>
-              </li>
-              <li>
-                <a class="dropdown-item d-flex" href="sign-in-cover"><i
-                    class="ti ti-logout fs-18 me-2 op-7"></i>Log Out</a>
+                <a class="dropdown-item d-flex" href="sign-in-cover"><i class="ti ti-logout fs-18 me-2 op-7"></i>Log
+                  Out</a>
               </li>
             </ul>
           </div>
@@ -206,7 +160,7 @@
               <a href="javascript:void(0);" class="side-menu__item">
                 <i class="bx bx-store-alt side-menu__icon"></i>
                 <span class="side-menu__label">Product Management </span>
-                <i class="fe fe-chevron-right side-menu__angle"></i>
+                <i class="fe fe-chevron-right ri-arrow-down-s-line"></i>
               </a>
               <ul class="slide-menu child1">
                 <li class="slide side-menu__label1">
@@ -220,7 +174,7 @@
                 </li>
                 <li class="slide has-sub">
                   <a href="javascript:void(0);" class="side-menu__item">Product Categories
-                    <i class="fe fe-chevron-right side-menu__angle"></i></a>
+                    <i class="fe fe-chevron-right ri-arrow-down-s-line"></i></a>
                   <ul class="slide-menu child2">
                     <li class="slide">
                       <a href="add_category" class="side-menu__item">Add Category</a>
@@ -238,14 +192,14 @@
               <a href="javascript:void(0);" class="side-menu__item">
                 <i class="bx bx-cart side-menu__icon"></i>
                 <span class="side-menu__label">User Management </span>
-                <i class="fe fe-chevron-right side-menu__angle"></i>
+                <i class="fe fe-chevron-right ri-arrow-down-s-line"></i>
               </a>
               <ul class="slide-menu child1">
                 <li class="slide side-menu__label1">
                   <a href="javascript:void(0)">Review Vendor Regis.</a>
                 </li>
                 <li class="slide">
-                  <a href="addvendor" class="side-menu__item">View Vendor</a>
+                  <a href="view_vendors" class="side-menu__item">View Vendor</a>
                 </li>
                 <li class="slide">
                   <a href="addvendor" class="side-menu__item">View Customers</a>
@@ -479,7 +433,7 @@
   <script src="{% static '/assets/libs/jsvectormap/maps/world-merc.js' %}"></script>
 
   <!-- Date & Time Picker JS -->
-  <script src="{% static '/assets/libs/flatpickr/flatpickr.min.js' %}"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flatpickr/4.6.13/flatpickr.min.js"></script>
 
   <!-- Sales-Dashboard JS -->
   <script src="{% static '/assets/js/sales-dashboard.js' %}"></script>
