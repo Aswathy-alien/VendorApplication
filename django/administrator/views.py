@@ -1,61 +1,73 @@
-
 # Create your views here.
-from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from administrator.forms import ProductCategoryForm
+from administrator.models import Company, ProductCategory, Product  # Import the ProductCategory model
+from django.core.paginator import Paginator
+from django.db.models import Q
 
-def index(request):
-    return render(request, 'index.html')
 
-def login(request):
-    return render(request, 'login.html')
 
-def register(request):
-    return render(request, 'register.html')
+def admin_dashboard(request):
+    company_count = Company.objects.count()
+    product_count = Product.objects.count()
+    product_category_count = ProductCategory.objects.count()
+    context = {
+        'company_count': company_count,
+        'product_count': product_count,
+        'product_category_count': product_category_count,
+    }
+    return render(request, 'dashboard.html', context)
 
-def admindashboard(request):
-    return render(request, 'dashboard.html')
 
-def adminaddcategory(request):
+def admin_add_category(request):
     if request.method == 'POST':
         form = ProductCategoryForm(request.POST)
         if form.is_valid():
             form.save()
             # Redirect to a success URL after form submission
-            return redirect('administrator:adminviewcategory')
+            return redirect('administrator:admin_view_category')
     else:
         form = ProductCategoryForm()
-    return render(request, 'addcategory.html', {'form': form})
-
-def adminreviewproduct(request):
-    return render(request, 'reviewproduct.html')
-
-def adminviewproduct(request):
-    return render(request, 'viewproduct.html')
+    return render(request, 'add_category.html', {'form': form})
 
 
-from administrator.models import Companies, ProductCategory  # Import the ProductCategory model
+def admin_review_product(request):
+    return render(request, 'review_product.html')
 
-def adminviewcategory(request):
+
+
+def admin_view_product(request):
+    search_query = request.GET.get('search', '')
+    products = Product.objects.select_related('company')
+
+    if search_query:
+        products = products.filter(
+            Q(name__icontains=search_query) |
+            Q(type__icontains=search_query) |
+            Q(company__name__icontains=search_query) |
+            Q(cloud_type__icontains=search_query) |
+            Q(business_areas__icontains=search_query)
+        )
+
+    products = products.order_by('id')
+    paginator = Paginator(products, 8)  # Show 10 products per page
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    context = {
+        'products': page_obj,
+        'search_query': search_query
+    }
+    return render(request, 'view_product.html', context)
+
+
+def admin_view_category(request):
     categories = ProductCategory.objects.all()  # Fetch all ProductCategory objects from the database
-    return render(request, 'viewcategory.html', {'categories': categories})
+    return render(request, 'view_category.html', {'categories': categories})
 
-
-import json
 
 def delete_category(request, category_id):
     category = get_object_or_404(ProductCategory, id=category_id)
     if request.method == 'POST':
         category.delete()
-        return redirect('../../viewcategory.html')
-    return redirect('viewcategory.html')  # Redirect to appropriate URL after deletion
-
-def admindashboard(request):
-
-    company_count = Companies.objects.count()
-    category_count = ProductCategory.objects.count()
-    context = {
-        'company_count': company_count,
-        'category_count': category_count
-    }
-    return render(request, 'dashboard.html', context)
+        return redirect('../../view_category.html')
+    return redirect('view_category.html')  # Redirect to appropriate URL after deletion
