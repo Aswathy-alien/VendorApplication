@@ -3,7 +3,6 @@ from django.shortcuts import redirect, render,get_object_or_404
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.db.models import Q
 
-
 from administrator.models import Product, ProductCategory, Company
 from main_app.models import home_productlist,home_categorieslist
 
@@ -70,8 +69,8 @@ def profile_page(request):
     
     return render(request, 'profilepage.html')
 
-def product_detail(request, product_id):
-    product = get_object_or_404(Product, id=product_id)
+def product_detail(request, product_name):
+    product = get_object_or_404(Product, name=product_name)
     business_areas = product.business_areas.split(',') if product.business_areas else []
     financial_services_client_types = product.financial_services_client_types.split(',') if product.financial_services_client_types else []
 
@@ -79,7 +78,7 @@ def product_detail(request, product_id):
     categories = product.categories.all()
     
     # Find other products that belong to any of these categories
-    similar_products = Product.objects.filter(categories__in=categories).exclude(id=product_id).distinct()
+    similar_products = Product.objects.filter(categories__in=categories).exclude(name=product_name).distinct()
 
     context = {
         'product': product,
@@ -95,22 +94,17 @@ def viewprofile_page(request):
 
 
 
+from django.db.models import Q
+
 def company_listing(request):
-    companies = Company.objects.all()
     query = request.GET.get('q', '')
-    
-    
+    companies = Company.objects.all()
+
     if query:
-        companies = Company.objects.filter(
-            Q(name__icontains=query)
-            
-        )
-    else:
-        companies = Company.objects.all()
-
-
-         
+        companies = companies.filter(name__icontains=query)
+    
     return render(request, 'companylisting.html', {'companies': companies})
+
 
 
 
@@ -122,8 +116,7 @@ def company_details(request, company_id):
         'company': company,
         'products' : products,
         'categories' : categories
-        
-    }
+            }
     return render(request, 'company-details.html', context)
 
 

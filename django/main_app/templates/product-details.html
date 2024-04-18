@@ -128,6 +128,11 @@
                   <span class="side-menu__label">Product Search</span>
                 </a>
               </li>
+              <li class="slide">
+                <a href="../../companylisting" class="side-menu__item">
+                  <span class="side-menu__label">Vendor List</span>
+                </a>
+              </li>
               <!-- End::slide -->
             </ul>
             <div class="slide-right" id="slide-right">
@@ -166,7 +171,7 @@
                     </h5>
                   </div>
                   <p class="fs-13 mb-5 text-fixed-white op-9">
-                     <a  href="../../productlisting" style="color: #ffffff;">Product </a> /
+                    <a href="../../productlisting" style="color: #ffffff;">Product </a> /
                     <span class="text-secondary">{{product.name}}</span>
                   </p>
                 </div>
@@ -192,12 +197,11 @@
                             <div class="swiper swiper-preview-details bg-light product-details-page">
                               <div class="swiper-wrapper">
                                 <div class="swiper-slide" id="img-container">
-                                  <img class="img-fluid" src="{{ product.logo.url }}"
-                                    alt="img" />
+                                  <img class="img-fluid" src="{{ product.logo.url }}" alt="img" />
                                 </div>
-                                
+
                               </div>
-                              
+
                             </div>
                           </div>
                           <div class="col-xxl-12 col-xl-6 col-lg-6 col-md-6 col-sm-12 d-md-block d-none">
@@ -207,44 +211,48 @@
                             <div class="table-responsive">
                               <table class="table table-bordered text-nowrap">
                                 <tbody>
-                                  
-                                            {% for similar_product in similar_products %}
-                                            <tr>
-                                                <td>
-                                                    <a href="javascript:void(0);">
-                                                        <div class="d-flex align-items-top">
-                                                            <div class="similar-products-image me-2">
-                                                              
-                                                                <!-- Assuming similar_product.logo.url returns the URL of the logo image -->
-                                                               <a href="{% url 'main_app:product_detail' product_id=similar_product.id %}" class="product-image">
-                                                                <img src="{{ similar_product.logo.url }}" alt="" />
-                                                            </div>
-                                                            
-                                                            <div class="flex-fill">
-                                                                <p class="mb-1 fs-14 fw-semibold similar-product-name text-truncate">
-                                                                    {{ similar_product.name }}
-                                                                </p>
-                                                                <p class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
-                                                                  {{ similar_product.company.name }} </p>
-                                                                                          <p class="mb-0">
-                                                                    <span class="badge bg-success">4.5<i class="ri-star-s-fill ms-1"></i></span>
-                                                                    <span class="fs-12 text-muted ms-1">(100)</span>
-                                                                </p>
-                                                            </div>
-                                                        </div>
-                                                    </a>
-                                                </td>
-                                            </tr>
-                                            {% empty %}
-                                            <tr>
-                                                <td>No similar products found.</td>
-                                            </tr>
-                                            {% endfor %}
-                                        
-                                  
+
+                                  {% for similar_product in similar_products %}
+                                  <tr>
+                                    <td>
+                                      <a href="javascript:void(0);">
+                                        <div class="d-flex align-items-top">
+                                          <div class="similar-products-image me-2">
+
+                                            <!-- Assuming similar_product.logo.url returns the URL of the logo image -->
+                                            <a href="{% url 'main_app:product_detail' product_id=similar_product.id %}"
+                                              class="product-image">
+                                              <img src="{{ similar_product.logo.url }}" alt="" />
+                                          </div>
+
+                                          <div class="flex-fill">
+                                            <p class="mb-1 fs-14 fw-semibold similar-product-name text-truncate">
+                                              {{ similar_product.name }}
+                                            </p>
+                                            <p
+                                              class="mb-1 fw-normal fs-12 d-flex align-items-start justify-content-between">
+                                              {{ similar_product.company.name }} </p>
+                                            <p class="mb-0">
+                                              <span class="badge bg-success">4.5<i
+                                                  class="ri-star-s-fill ms-1"></i></span>
+                                              <span class="fs-12 text-muted ms-1">(100)</span>
+                                            </p>
+                                          </div>
+                                        </div>
+                                      </a>
+                                    </td>
+                                  </tr>
+                                  {% empty %}
+                                  <tr>
+                                    <td>No similar products found.</td>
+                                  </tr>
+                                  {% endfor %}
+
+
                                   <tr>
                                     <td class="d-grid">
-                                      <button class="btn btn-primary-light" onclick="location.href='../../productlisting'" type="button " >
+                                      <button class="btn btn-primary-light"
+                                        onclick="location.href='../../productlisting'" type="button ">
                                         View All Products
                                       </button>
                                     </td>
@@ -302,12 +310,12 @@
                                             <th scope="row" class="fw-semibold">
                                               Product Category
                                             </th>
-                                            <td> 
+                                            <td>
                                               {% for category in product.categories.all %}
-                                  {{ category.category_name }}
-                                  {% if not forloop.last %}, {% endif %}
-                              {% endfor %}
-</td>
+                                              {{ category.category_name }}
+                                              {% if not forloop.last %}, {% endif %}
+                                              {% endfor %}
+                                            </td>
                                           </tr>
                                           <tr>
                                             <th scope="row" class="fw-semibold">
@@ -320,20 +328,20 @@
                                               Company Website
                                             </th>
                                             <td> {% if product.company.website %}
-                                              <a href="{{ product.company.website }}"target="_blank">{{ product.company.website }}</a>
+                                              <a href="{{ product.company.website }}" target="_blank">{{product.company.website }}</a>
                                               {% else %}
                                               <p>No website available</p>
                                               {% endif %}
                                             </td>
                                           </tr>
-                                          
+
                                           <tr>
                                             <th scope="row" class="fw-semibold">
                                               Cloud Type
                                             </th>
                                             <td>{{product.cloud_type}}</td>
                                           </tr>
-                                          
+
                                         </tbody>
                                       </table>
                                     </div>
@@ -364,16 +372,16 @@
                                   </div>
                                 </div>
                               </div>
-                              
-                              
-                                
-                                <div class="row">
-                                  
-                                </div>
-                             
+
+
+
+                              <div class="row">
+
+                              </div>
+
                               <div class="mb-0">
                                 <p class="fs-15 fw-semibold mb-3">
-                                   Ratings :
+                                  Ratings :
                                 </p>
                                 <div class="row">
                                   <div class="col-xxl-4 col-xl-12 col-lg-12 col-md-12 col-sm-12">
@@ -449,24 +457,24 @@
                                       </div>
                                     </div>
                                   </div>
-                                  
+
                                 </div>
                               </div>
                             </div>
                           </div>
                           <div class="col-xl-4 mt-xxl-0 mt-3">
                             <div class="mb-5">
-                          
-                        
-                              
-                              
+
+
+
+
                               <div class="d-grid">
                                 <a href="" class="btn btn-primary mb-2">View Demo</a>
                                 <a href="" class="btn btn-secondary mb-2">Download Files</a>
                                 <a href="" class="btn btn-light">Add To Wishlist</a>
                               </div>
                             </div>
-                            
+
                           </div>
                         </div>
                       </div>
@@ -609,7 +617,7 @@
 
   <!-- Custom JS -->
   <script src="{% static '/assets/js/custom.js'%}"></script>
-
+  <script src="{% static '/assets/js/animations.js' %}"></script>
 
 </body>
 

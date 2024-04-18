@@ -16862,15 +16862,6 @@ code[class*=language-] {
 [dir=rtl] .chat-footer .btn-send {
   transform: rotate(180deg);
 }
-/*Start:: Companies*/
-
-.company-logo {
-  background-color: rgb(var(--light-rgb));
-  width: 180px;
-  height: 180px;
-  object-fit: fit;
-}
-
 
 /* Start:: Products */
 .product-icons {
@@ -16887,6 +16878,8 @@ code[class*=language-] {
 
 .product-card {
   position: relative;
+  opacity: 0; /* Initially hide the product cards */
+  transition: opacity 0.5s ease; /* Smooth transition when opacity changes */
 }
 .product-card:hover .product-icons {
   display: block;
@@ -20597,3 +20590,44 @@ a:hover {
 }
 
 /* End::Transform */
+
+
+
+.typewriter {
+  overflow: hidden; /* Ensures the text is hidden until the animation reveals it */
+  border-right: .15em solid orange; /* Provides the typewriter cursor effect */
+  white-space: nowrap; /* Ensures the text doesn't wrap */
+  margin: 0 auto; /* Centers the text */
+  letter-spacing: .05em; /* Adjusts spacing between letters for aesthetic */
+  animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite; /* Animation properties */
+}
+
+/* Typing Animation */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* Blinking Cursor Animation */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: var(--secondary-rgb) }
+}
+
+
+@keyframes slideInRight {
+  from {
+      transform: translateX(100%);
+      opacity: 0;
+  }
+  to {
+      transform: translateX(0);
+      opacity: 1;
+  }
+}
+
+.slideInRight {
+  animation-name: slideInRight;
+  animation-duration: 0.5s;
+  animation-timing-function: ease;
+}
