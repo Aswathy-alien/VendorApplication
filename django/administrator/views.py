@@ -1,12 +1,17 @@
 # Create your views here.
 from django.shortcuts import get_object_or_404, redirect, render
-from administrator.forms import ProductCategoryForm
-from administrator.models import Company, ProductCategory, Product  # Import the ProductCategory model
 from django.core.paginator import Paginator
 from django.db.models import Q
+from django.contrib.auth.decorators import login_required
+
+from .forms import ProductCategoryForm
+from .models import Company, ProductCategory, Product  # Import the ProductCategory model
+
+from main_app.decorators import allowed_users
 
 
-
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def admin_dashboard(request):
     company_count = Company.objects.count()
     product_count = Product.objects.count()
@@ -19,6 +24,8 @@ def admin_dashboard(request):
     return render(request, 'dashboard.html', context)
 
 
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def admin_add_category(request):
     if request.method == 'POST':
         form = ProductCategoryForm(request.POST)
@@ -31,11 +38,14 @@ def admin_add_category(request):
     return render(request, 'add_category.html', {'form': form})
 
 
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def admin_review_product(request):
     return render(request, 'review_product.html')
 
 
-
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def admin_view_product(request):
     search_query = request.GET.get('search', '')
     products = Product.objects.select_related('company')
@@ -60,11 +70,15 @@ def admin_view_product(request):
     return render(request, 'view_product.html', context)
 
 
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def admin_view_category(request):
     categories = ProductCategory.objects.all()  # Fetch all ProductCategory objects from the database
     return render(request, 'view_category.html', {'categories': categories})
 
 
+@login_required(login_url='/login')
+@allowed_users(allowed_roles=['admin'])
 def delete_category(request, category_id):
     category = get_object_or_404(ProductCategory, id=category_id)
     if request.method == 'POST':
