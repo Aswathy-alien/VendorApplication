@@ -92,7 +92,7 @@
                     class="rounded-circle" />
                 </div>
                 <div class="d-sm-block d-none">
-                  <p class="fw-semibold mb-0 lh-1">Json Taylor</p>
+                  <p class="fw-semibold mb-0 lh-1">Hello {{ request.user }}</p>
                   <span class="op-7 fw-normal d-block fs-11">Administrator</span>
                 </div>
               </div>
@@ -124,12 +124,15 @@
       <!-- Start::main-sidebar-header -->
       <div class="main-sidebar-header">
         <a href="dashboard" class="header-logo">
-          <img src="{% static '/assets/images/brand-logos/desktop-logo.png' %}" alt="logo" class="desktop-logo" />
-          <img src="{% static '/assets/images/brand-logos/toggle-logo.png' %}" alt="logo" class="toggle-logo" />
-          <img src="{% static '/assets/images/brand-logos/desktop-dark.png' %}" alt="logo" class="desktop-dark" />
-          <img src="{% static '/assets/images/brand-logos/toggle-dark.png' %}" alt="logo" class="toggle-dark" />
+            <img src="{% static '/assets/images/brand-logos/desktop-logo.png' %}" alt="logo" class="desktop-logo"/>
+            <img src="{% static '/assets/images/brand-logos/toggle-logo.png' %}" alt="logo" class="toggle-logo"/>
+            <img src="{% static '/assets/images/brand-logos/desktop-dark.png' %}" alt="logo" class="desktop-dark"/>
+            <img src="{% static '/assets/images/brand-logos/toggle-dark.png' %}" alt="logo" class="toggle-dark"/>
         </a>
-      </div>
+        <div>
+            <h3 class="side-menu__label">Admin</h3>
+        </div>
+    </div>
       <!-- End::main-sidebar-header -->
 
       <!-- Start::main-sidebar -->
@@ -203,8 +206,8 @@
                   <a href="../../view_vendors" class="side-menu__item active">View Vendor</a>
                 </li>
                 <li class="slide">
-                  <a href="addvendor" class="side-menu__item">View Customers</a>
-                </li>
+                  <a href="#" class="side-menu__item">View Customers</a>
+              </li>
               </ul>
             </li>
             <!-- End::slide -->
