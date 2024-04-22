@@ -32,7 +32,7 @@ def admin_add_category(request):
         if form.is_valid():
             form.save()
             # Redirect to a success URL after form submission
-            return redirect('admin_app:admin_view_category')
+            return redirect('administrator:admin_view_category')
     else:
         form = ProductCategoryForm()
     return render(request, 'add_category.html', {'form': form})

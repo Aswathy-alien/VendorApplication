@@ -220,7 +220,7 @@
                                           <div class="similar-products-image me-2">
 
                                             <!-- Assuming similar_product.logo.url returns the URL of the logo image -->
-                                            <a href="{% url 'main_app:product_detail' product_name=similar_product.name %}"
+                                            <a href="{% url 'main_app:product_detail' product_id=similar_product.id %}"
                                               class="product-image">
                                               <img src="{{ similar_product.logo.url }}" alt="" />
                                           </div>

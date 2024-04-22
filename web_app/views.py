@@ -4,7 +4,7 @@ from django.db.models import Q
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
 
-from .forms import CustomUserCreationForm
+from .forms import CreateUserForm
 from .models import home_product_list, home_categories_list
 from .decorators import unauthenticated_user
 
@@ -50,24 +50,20 @@ def logout_user(request):
 
 @unauthenticated_user
 def register(request):
+    form = CreateUserForm()
+
     if request.method == 'POST':
-        form = CustomUserCreationForm(request.POST)
+        form = CreateUserForm(request.POST)
         if form.is_valid():
             user = form.save()
-            user.first_name = form.cleaned_data.get('first_name')
-            user.last_name = form.cleaned_data.get('last_name')
-            user.email = form.cleaned_data.get('email')
-            user_group = form.cleaned_data.get('user_group')
-            user.groups.add(user_group)
-            user.save()
-            username = form.cleaned_data.get('username')
-            messages.success(request, f'Account created for {username}!')
-            return redirect('main_app:login')
-        else:
-            messages.error(request, 'Please correct the errors below.')
-    else:
-        form = CustomUserCreationForm()
-    return render(request, 'register.html', {'form': form})
+            user.groups.add(2)
+            messages.success(request, 'Account was created successfully')
+            return redirect('/login')
+
+    context = {'form': form}
+    return render(request, 'register.html', context)
+
+
 def basetemp(request):
     return render(request, 'basetemplate.html')
 
@@ -122,8 +118,8 @@ def profile_page(request):
     return render(request, 'profilepage.html')
 
 
-def product_detail(request, product_name):
-    product = get_object_or_404(Product, name=product_name)
+def product_detail(request, product_id):
+    product = get_object_or_404(Product, id=product_id)
     business_areas = product.business_areas.split(',') if product.business_areas else []
     financial_services_client_types = product.financial_services_client_types.split(
         ',') if product.financial_services_client_types else []
