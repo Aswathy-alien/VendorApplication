@@ -1,6 +1,6 @@
 from . import views
 from django.urls import path
-
+from .views import index, login_page, logout_user, register, product_listing, profile_page, basetemp, product_detail, viewprofile_page, company_listing, company_details
 app_name = 'main_app'
 
 urlpatterns = [

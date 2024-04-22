@@ -69,9 +69,9 @@ def vendor_view_product(request):
 
 @login_required(login_url='/login')
 @allowed_users(allowed_roles=['vendor'])
-def vendor_view_category(request):
-    categories = ProductCategory.objects.all()  # Fetch all ProductCategory objects from the database
-    return render(request, 'vendor_view_category.html', {'categories': categories})
+def admin_add_product(request):
+    products = Product.objects.all()  # Fetch all ProductCategory objects from the database
+    return render(request, 'addproduct.html', {'products': products})
 
 
 @login_required(login_url='/login')

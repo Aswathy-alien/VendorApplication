@@ -50,29 +50,45 @@
                     <div class="row gy-3">
                         <form method="POST" action="">
                             {% csrf_token %}
+                            {% if form.errors %}
+                                <div class="alert alert-danger">
+                                    {% for field in form %}
+                                        {% for error in field.errors %}
+                                            <p>{{ error }}</p>
+                                        {% endfor %}
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
                             <div class="col-xl-12 input-group my-2">
-                                <input type="text" name="username" class="form-control form-control-lg"
-                                       placeholder="username">
+                                {{ form.username }}
                             </div>
                             <div class="col-xl-12 input-group my-2">
-                                <input type="text" name="first_name" class="form-control form-control-lg"
-                                       placeholder="first name">
+                                {{ form.first_name }}
                             </div>
                             <div class="col-xl-12 input-group my-2">
-                                <input type="text" name="last_name" class="form-control form-control-lg"
-                                       placeholder="last name">
+                                {{ form.last_name }}
                             </div>
                             <div class="col-xl-12 input-group my-2">
-                                <input type="email" name="email" class="form-control"
-                                       placeholder="email">
+                                {{ form.email }}
                             </div>
                             <div class="col-xl-12 input-group my-2">
-                                <input type="password" name="password1" class="form-control form-control-lg"
-                                       placeholder="password">
+                                {{ form.password1 }}
                             </div>
                             <div class="col-xl-12 mb-2 input-group my-2">
-                                <input type="password" name="password2" class="form-control form-control-lg"
-                                       placeholder="confirm password">
+                                {{ form.password2 }}
+                            </div>
+                            <div class="col-xl-12">
+                                <div class="input-group">
+                                    <label for="signup-usertype" class="form-label text-default">Select Type of user</label>
+                                </div>
+                                {% for radio in form.user_group %}
+                                    <div class="form-check">
+                                        {{ radio.tag }}
+                                        <label class="form-check-label" for="{{ radio.id_for_label }}">
+                                            {{ radio.choice_label }}
+                                        </label>
+                                    </div>
+                                {% endfor %}
                             </div>
                             <div class="col-xl-12 d-grid mt-2">
                                 <input class="btn btn-lg btn-primary" type="submit" value="Create Account"/>
@@ -81,10 +97,8 @@
                     </div>
                 </div>
                 <div class="text-center">
-                    <p class="fs-12 text-muted mt-3">Already have an account? <a href=" login" class="text-primary">Sign
-                        In</a></p>
+                    <p class="fs-12 text-muted mt-3">Already have an account? <a href="{% url 'web_app:login' %}" class="text-primary">Sign In</a></p>
                 </div>
-
             </div>
         </div>
     </div>
